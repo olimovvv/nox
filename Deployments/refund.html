@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Refunds — Nox</title>
+<meta name="description" content="Ask within 14 days and you get your money back. How to ask, how long it takes, and the few things that are not refundable."/>
+<meta name="author" content="Behruzbek Olimov"/>
+<meta name="copyright" content="Copyright © 2026 Behruzbek Olimov. All rights reserved."/>
+<link rel="canonical" href="https://noxlabapp.vercel.app/refund"/>
+<link rel="icon" href="icon-192.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0c0c;--s1:#141414;--s2:#1a1a1a;--bd:#232323;--bd2:#2c2c2c;
+  --t1:#f0f0f0;--t2:#a8a8a8;--t-cap:#7d7d7d;--acc:#52D1A4;
+}
+html.light{
+  --bg:#efe6d3;--s1:#f7f0e2;--s2:#f2e9d8;--bd:#ded2b8;--bd2:#d3c5a6;
+  --t1:#231e13;--t2:#4a4234;--t-cap:#6e644e;--acc:#147150;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--bg);color:var(--t1);
+  font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.72;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  padding:0 22px 90px;
+}
+.wrap{max-width:720px;margin:0 auto;}
+nav{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:22px 0;border-bottom:.5px solid var(--bd);flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--t1);}
+.brand span{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:500;letter-spacing:-.01em;}
+.ctrl{display:flex;gap:6px;align-items:center;}
+.ctrl button{
+  background:var(--s1);border:.5px solid var(--bd2);color:var(--t2);
+  font-family:'Inter',sans-serif;font-size:11.5px;padding:6px 10px;border-radius:8px;cursor:pointer;
+  transition:color .18s ease,border-color .18s ease,background-color .18s ease;
+}
+.ctrl button:hover{color:var(--t1);}
+.ctrl button.on{color:var(--acc);border-color:var(--acc);}
+header{padding:52px 0 30px;}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,6vw,46px);font-weight:700;line-height:1.05;letter-spacing:-.025em;text-wrap:balance;}
+.upd{font-size:12px;color:var(--t-cap);margin-top:12px;font-variant-numeric:tabular-nums;}
+.lede{font-size:16.5px;color:var(--t2);margin-top:18px;max-width:58ch;text-wrap:pretty;}
+h2{
+  font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:500;
+  letter-spacing:-.012em;margin:42px 0 12px;text-wrap:balance;
+}
+p{margin-bottom:14px;color:var(--t2);text-wrap:pretty;}
+p strong,li strong{color:var(--t1);font-weight:500;}
+ul{margin:0 0 16px 0;padding-left:0;list-style:none;}
+li{position:relative;padding-left:18px;margin-bottom:9px;color:var(--t2);text-wrap:pretty;}
+li::before{content:"";position:absolute;left:2px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--bd2);}
+.callout{
+  background:var(--s1);border:.5px solid var(--bd2);border-left:2px solid var(--acc);
+  border-radius:0 10px 10px 0;padding:16px 18px;margin:18px 0;
+}
+.callout p:last-child{margin-bottom:0;}
+.todo{border-left-color:#e0a33a;}
+a{color:var(--acc);}
+footer{margin-top:56px;padding-top:22px;border-top:.5px solid var(--bd);font-size:12.5px;color:var(--t-cap);}
+footer a{color:var(--t2);text-decoration:none;border-bottom:.5px solid var(--bd2);}
+footer a:hover{color:var(--acc);border-bottom-color:var(--acc);}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+<link rel="stylesheet" href="assets/legal.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="/">
+      <svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11.19 2A9 9 0 1 0 19.8 12.9 7 7 0 1 1 11.19 2Z" fill="var(--t1)"/></svg>
+      <span>nox</span>
+    </a>
+    <div class="ctrl">
+      <button id="l-en" onclick="setL('en')">EN</button>
+      <button id="l-uz" onclick="setL('uz')">UZ</button>
+      <button id="l-ru" onclick="setL('ru')">RU</button>
+      <button id="thm" onclick="setT()" aria-label="Theme">☀︎</button>
+    </div>
+  </nav>
+  <main id="doc"></main>
+  <footer>
+    <a href="/">&larr; <span id="back">back to Nox</span></a>
+    &nbsp;·&nbsp; <a href="terms.html">Terms</a>
+    &nbsp;·&nbsp; <a href="privacy.html">Privacy</a>
+    &nbsp;·&nbsp; <a href="ownership.html">Ownership</a>
+  </footer>
+</div>
+
+<script>
+const CONTACT_EMAIL = "noxlab.help@gmail.com";
+const REFUND_DAYS = 14;          // the promise made on this page and in the pay modal
+const REFUND_WORKING_DAYS = 7;   // how long the transfer back may take
+
+const DOC = {
+en:{
+  back:"back to Nox",
+  title:"Refund Policy",
+  upd:"Last updated: 7 September 2026",
+  lede:"Pro is one prepaid month, paid by card transfer and switched on by hand. If it was not what you wanted, ask and you get your money back.",
+  hero:"Ask within " + REFUND_DAYS + " days of your payment being approved and you get a full refund. You do not have to explain why.",
+  s:[
+    ["When you get a full refund",[
+      "<strong>Within " + REFUND_DAYS + " days</strong> of your payment being approved — for any reason at all, including simply changing your mind. No questions.",
+      "<strong>At any time, if Pro was never switched on</strong> for the money you sent.",
+      "<strong>At any time, if you paid twice</strong> for the same month by mistake.",
+      "<strong>At any time, if Pro was broken for you</strong> and we could not fix it — for example a feature you paid for stopped working and stayed broken."
+    ]],
+    ["After the first " + REFUND_DAYS + " days",[
+      "The month you paid for keeps running to its end. Nothing renews on its own, so there is no future charge to stop and nothing to cancel.",
+      "If we remove a feature you paid for while your month is still running, you can ask for a refund of the unused part, counted by day."
+    ]],
+    ["How to ask",[
+      "Write to <span class='mail'></span> from the email address on your account, and say roughly when you paid. That is all we need to find it.",
+      "You do not need a form, a reason, or a specific phrase."
+    ]],
+    ["How the money comes back",[
+      "The refund is sent as a transfer back to <strong>the same card you paid from</strong>. If that card no longer works, tell us and we will agree another way.",
+      "We reply within <strong>2 working days</strong> and send the money within <strong>" + REFUND_WORKING_DAYS + " working days</strong> of agreeing the refund.",
+      "You get the <strong>full amount you paid</strong>. We do not deduct a fee. Whatever your bank charges on its side is outside our control."
+    ]],
+    ["What happens to your Pro",[
+      "When a refund is sent, Pro ends and the account returns to the Free plan.",
+      "<strong>Your data is not touched.</strong> Tasks, habits, notes, goals and files all stay exactly where they are — the Free plan's limits apply to adding new things, not to what you already have."
+    ]],
+    ["What is not refundable",[
+      "<strong>Free Pro days from referrals.</strong> No money was paid for them, so there is nothing to return.",
+      "<strong>Pro granted by us directly</strong> as a gift or as an apology, for the same reason.",
+      "<strong>An account closed for breaking the rules</strong> in the <a href='terms.html'>Terms</a> — deliberate abuse, fraud, or harming other members."
+    ]],
+    ["If you disagree",[
+      "Say so in the same email thread. If we still disagree, your rights as a consumer under the law of the Republic of Uzbekistan are unaffected by anything on this page."
+    ]]
+  ],
+  contact_h:"Ask for a refund",
+  contact_p:"Write to:"
+},
+uz:{
+  back:"Nox'ga qaytish",
+  title:"Pulni qaytarish siyosati",
+  upd:"Oxirgi yangilanish: 2026-yil 7-sentabr",
+  lede:"Pro — oldindan to'langan bir oy, karta o'tkazmasi bilan to'lanadi va qo'lda yoqiladi. Agar u siz kutgan narsa bo'lmasa, ayting — pulingiz qaytariladi.",
+  hero:"To'lovingiz tasdiqlangandan keyin " + REFUND_DAYS + " kun ichida so'rasangiz, to'liq qaytariladi. Sababini tushuntirishingiz shart emas.",
+  s:[
+    ["Qachon to'liq qaytariladi",[
+      "To'lov tasdiqlangandan keyin <strong>" + REFUND_DAYS + " kun ichida</strong> — istalgan sababga ko'ra, shunchaki fikringiz o'zgargan bo'lsa ham. Savolsiz.",
+      "<strong>Istalgan payt, agar yuborgan pulingiz uchun Pro umuman yoqilmagan bo'lsa.</strong>",
+      "<strong>Istalgan payt, agar bir oy uchun adashib ikki marta to'lagan bo'lsangiz.</strong>",
+      "<strong>Istalgan payt, agar Pro siz uchun ishlamagan bo'lsa</strong> va biz tuzata olmagan bo'lsak — masalan, to'lagan imkoniyatingiz ishlamay qolib, shundayligicha qolgan bo'lsa."
+    ]],
+    ["Birinchi " + REFUND_DAYS + " kundan keyin",[
+      "To'lagan oyingiz oxirigacha ishlayveradi. Hech narsa o'z-o'zidan uzaytirilmaydi, ya'ni to'xtatadigan kelgusi to'lov ham, bekor qiladigan narsa ham yo'q.",
+      "Agar siz to'lagan imkoniyat oyingiz davomida olib tashlansa, ishlatilmagan qismi uchun kunlab hisoblab qaytarishni so'rashingiz mumkin."
+    ]],
+    ["Qanday so'raysiz",[
+      "<span class='mail'></span> manziliga akkauntingizdagi pochtadan yozing va taxminan qachon to'laganingizni ayting. Topish uchun shuning o'zi yetarli.",
+      "Hech qanday shakl, sabab yoki maxsus ibora kerak emas."
+    ]],
+    ["Pul qanday qaytadi",[
+      "Pul <strong>siz to'lagan o'sha kartaga</strong> qaytarib o'tkaziladi. Agar o'sha karta ishlamay qolgan bo'lsa, ayting — boshqa yo'lini kelishamiz.",
+      "<strong>2 ish kuni</strong> ichida javob beramiz va qaytarish kelishilgach <strong>" + REFUND_WORKING_DAYS + " ish kuni</strong> ichida pulni yuboramiz.",
+      "<strong>To'lagan summangiz to'liq</strong> qaytadi. Biz hech qanday komissiya ushlab qolmaymiz. Bankingiz o'z tomonida oladigan haq bizga bog'liq emas."
+    ]],
+    ["Pro'ga nima bo'ladi",[
+      "Pul qaytarilganda Pro tugaydi va akkaunt Bepul tarifga qaytadi.",
+      "<strong>Ma'lumotlaringizga tegilmaydi.</strong> Vazifalar, odatlar, eslatmalar, maqsadlar va fayllar joyida qoladi — Bepul tarif chegaralari yangi narsa qo'shishga taalluqli, mavjudlariga emas."
+    ]],
+    ["Nima qaytarilmaydi",[
+      "<strong>Taklif orqali olingan bepul Pro kunlari.</strong> Ular uchun pul to'lanmagan, demak qaytaradigan narsa ham yo'q.",
+      "<strong>Biz sovg'a yoki uzr sifatida bergan Pro</strong> — xuddi shu sababga ko'ra.",
+      "<strong>Qoidalarni buzgani uchun yopilgan akkaunt</strong> — <a href='terms.html'>Shartlar</a>dagi ataylab suiiste'mol, firibgarlik yoki boshqalarga zarar yetkazish holatlari."
+    ]],
+    ["Rozi bo'lmasangiz",[
+      "Xuddi shu xat ichida ayting. Kelisha olmasak ham, O'zbekiston Respublikasi qonuni bergan iste'molchi huquqlaringiz bu sahifadagi hech narsa bilan cheklanmaydi."
+    ]]
+  ],
+  contact_h:"Pulni qaytarishni so'rash",
+  contact_p:"Yozing:"
+},
+ru:{
+  back:"вернуться в Nox",
+  title:"Политика возврата",
+  upd:"Последнее обновление: 7 сентября 2026",
+  lede:"Pro — это один предоплаченный месяц: оплата переводом на карту, включение вручную. Если это не то, чего вы хотели, — скажите, и деньги вернутся.",
+  hero:"Попросите в течение " + REFUND_DAYS + " дней после подтверждения оплаты — и получите полный возврат. Объяснять причину не нужно.",
+  s:[
+    ["Когда возврат полный",[
+      "<strong>В течение " + REFUND_DAYS + " дней</strong> после подтверждения оплаты — по любой причине, включая просто передумали. Без вопросов.",
+      "<strong>В любой момент, если Pro так и не включили</strong> за отправленные вами деньги.",
+      "<strong>В любой момент, если вы по ошибке оплатили дважды</strong> один и тот же месяц.",
+      "<strong>В любой момент, если Pro у вас не работал</strong> и мы не смогли это починить — например, оплаченная функция перестала работать и осталась сломанной."
+    ]],
+    ["После первых " + REFUND_DAYS + " дней",[
+      "Оплаченный месяц доходит до конца. Ничего не продлевается само, поэтому останавливать нечего и отменять нечего.",
+      "Если оплаченную функцию удалят в течение вашего месяца, можно попросить возврат за неиспользованную часть, посчитанную по дням."
+    ]],
+    ["Как попросить",[
+      "Напишите на <span class='mail'></span> с почты вашего аккаунта и укажите примерно, когда платили. Этого достаточно, чтобы найти платёж.",
+      "Никакой формы, причины или особой формулировки не нужно."
+    ]],
+    ["Как возвращаются деньги",[
+      "Возврат отправляется переводом <strong>на ту же карту, с которой вы платили</strong>. Если карта больше не работает — скажите, договоримся иначе.",
+      "Мы отвечаем в течение <strong>2 рабочих дней</strong> и отправляем деньги в течение <strong>" + REFUND_WORKING_DAYS + " рабочих дней</strong> после согласования возврата.",
+      "Вы получаете <strong>полную сумму</strong>. Мы не удерживаем комиссию. Что берёт ваш банк со своей стороны — вне нашего контроля."
+    ]],
+    ["Что будет с Pro",[
+      "После отправки возврата Pro заканчивается и аккаунт возвращается на бесплатный тариф.",
+      "<strong>Данные не трогаются.</strong> Задачи, привычки, заметки, цели и файлы остаются на месте — лимиты бесплатного тарифа касаются добавления нового, а не того, что уже есть."
+    ]],
+    ["Что не возвращается",[
+      "<strong>Бесплатные дни Pro за приглашения.</strong> За них не платили — возвращать нечего.",
+      "<strong>Pro, выданный нами напрямую</strong> в подарок или в качестве извинения — по той же причине.",
+      "<strong>Аккаунт, закрытый за нарушение правил</strong> из <a href='terms.html'>Условий</a>: намеренные злоупотребления, мошенничество или вред другим участникам."
+    ]],
+    ["Если вы не согласны",[
+      "Скажите об этом в той же переписке. Даже если мы не договоримся, ваши потребительские права по закону Республики Узбекистан ничем на этой странице не ограничиваются."
+    ]]
+  ],
+  contact_h:"Попросить возврат",
+  contact_p:"Пишите:"
+}
+};
+
+let L = (localStorage.getItem("nox_lang") || "en");
+if(!DOC[L]) L = "en";
+
+function render(){
+  const d = DOC[L];
+  document.documentElement.lang = L;
+  document.title = d.title + " — Nox";
+  document.getElementById("back").textContent = d.back;
+  ["en","uz","ru"].forEach(x => document.getElementById("l-"+x).classList.toggle("on", x === L));
+  document.getElementById("doc").innerHTML =
+    '<header><h1>' + d.title + '</h1><div class="upd">' + d.upd + '</div>'
+    + '<p class="lede">' + d.lede + '</p></header>'
+    + '<div class="callout"><p><strong>' + d.hero + '</strong></p></div>'
+    + d.s.map(sec =>
+        '<h2>' + sec[0] + '</h2><ul>' + sec[1].map(li => '<li>' + li + '</li>').join("") + '</ul>'
+      ).join("")
+    + '<h2>' + d.contact_h + '</h2><p>' + d.contact_p
+    + ' <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a></p>';
+  // the address appears mid-sentence in one bullet too; fill it after the HTML exists
+  document.querySelectorAll("#doc .mail").forEach(el => {
+    el.innerHTML = '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>';
+  });
+}
+function setL(x){ L = x; try{ localStorage.setItem("nox_lang", x); }catch(e){} render(); }
+function setT(){
+  const light = document.documentElement.classList.toggle("light");
+  document.body.classList.toggle("light", light);
+  try{ localStorage.setItem("nox_theme", light ? "light" : "dark"); }catch(e){}
+  document.getElementById("thm").textContent = light ? "☾" : "☀︎";
+}
+(function(){
+  let saved = null;
+  try{ saved = localStorage.getItem("nox_theme"); }catch(e){}
+  if(saved === "light"){
+    document.documentElement.classList.add("light");
+    document.body.classList.add("light");
+    document.getElementById("thm").textContent = "☾";
+  }
+  render();
+})();
+</script>
+
+
+<script src="assets/legal.js"></script>
+</body>
+</html>

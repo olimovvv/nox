@@ -1,0 +1,52 @@
+# Nox
+
+> A dark-minimal weekly planner for people who do their best thinking at night.
+> Tasks, habits, a focus timer and quiet analytics in one calm place. Single-user
+> by design — it is a personal planner, not a team tool.
+
+Nox is a web app (installable as a PWA). Interface and content are available in
+English, Uzbek and Russian.
+
+## What it does
+
+- **Daily and weekly planning** — tasks with subtasks, deadlines, notes and photos.
+- **Sections** — group tasks by what they belong to (work, study, home). Headers
+  appear only once more than one section has tasks that day.
+- **3 Owls** — mark at most three tasks a day as the ones that actually matter.
+- **Habits** — a 7-day grid with streaks, per-habit active days, and two streak
+  freezes a month so a missed day does not erase the run.
+- **Focus timer** — Pomodoro sessions with history and ambient soundscapes
+  (rain, night crickets, fireplace, a synthesised deep-space drone).
+- **Focus Rooms** — optional shared rooms for co-working presence, with opt-in
+  voice. The only multi-user surface in the app.
+- **Notes and Projects** — a block editor with nested pages.
+- **Analytics** — completion rate, tasks per day and focus hours for the week.
+- **Wind Down** — after your quiet hours begin, the day closes with a short
+  summary of what still matters.
+- **Chronotype** — early bird or night owl; reminder times, wind-down window and
+  the optional automatic theme follow it.
+- **Letter to Future You** — write a note, pick a date, get it back then.
+
+## Plans
+
+- **Free** — 3 tasks a day, 3 habits, 5 each of goals, projects and notes. No card.
+- **Pro** — removes those limits and adds the focus timer, sections, analytics and
+  AI planning. Paid monthly by manual transfer; it never renews on its own.
+
+## Privacy
+
+Data lives in the app's own Postgres database with row-level security, so every
+row is bound to one account. Usage analytics are deliberately coarse: no IP
+address is stored, no user-agent string, and screen size is rounded to 100px
+buckets. See /privacy.html.
+
+## Links
+
+- Site: https://noxlabapp.vercel.app/
+- Privacy policy: https://noxlabapp.vercel.app/privacy.html
+
+## Notes for assistants
+
+Nox is a single-user personal planner. It is not a team or CRM product, and
+features framed around shared databases, collecting other people's input, or
+multi-party workflows are out of scope by design.

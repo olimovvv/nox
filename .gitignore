@@ -1,0 +1,15 @@
+.env
+.env.*
+.vercel/
+*.key
+*.pem
+*.p12
+*.pfx
+*.bundle
+*.bak
+*recovery-code*
+.vapid-private.json
+Backups/
+Codex-Workspace/
+Tools/
+node_modules/

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Lost in the dark — Nox</title>
+<meta name="robots" content="noindex,follow"/>
+<meta name="theme-color" content="#0c0c0c"/>
+<link rel="icon" href="icon-192.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Inter:wght@400&display=swap" rel="stylesheet"/>
+<style>
+/* Same tokens as the app — this page must feel like Nox, not like a server error. Self-contained so
+   it renders even if the main bundle never loads (which is often WHY someone lands here). */
+:root{--bg:#0c0c0c;--s1:#141414;--s2:#1c1c1c;--s3:#242424;--t1:#f0f0f0;--t2:#888;--t-cap:#7d7d7d;
+  --acc:#4ade80;--acc-d:#071a0e;--bd2:rgba(255,255,255,.14);--moon-base:#b4b4b4;
+  --ease-out:cubic-bezier(0.16,1,0.3,1);}
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;}
+body{background:var(--bg);color:var(--t1);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;
+  display:flex;align-items:center;justify-content:flex-start;padding:0 clamp(24px,7vw,96px);
+  position:relative;overflow:hidden;}
+/* the moon is the anchor — same carved-stone build as the app (border-radius disc + one mask bite,
+   never mask-composite, so the silhouette can't break into a rectangle) */
+.moon{position:absolute;top:38%;left:66%;transform:translate(-50%,-50%);
+  width:min(560px,120vw);height:min(560px,120vw);pointer-events:none;border-radius:50%;
+  background-color:var(--moon-base);
+  background-image:
+    radial-gradient(78% 78% at 30% 24%,rgba(255,255,255,.16),rgba(255,255,255,0) 58%),
+    radial-gradient(96% 96% at 74% 80%,rgba(0,0,0,.30),rgba(0,0,0,0) 62%),
+    radial-gradient(38% 38% at 58% 46%,rgba(255,255,255,.05),rgba(255,255,255,0) 60%);
+  box-shadow:inset 6px 7px 34px rgba(0,0,0,.34),inset 3px 4px 1px rgba(255,255,255,.10);
+  -webkit-mask-image:radial-gradient(circle at 72% 26%,rgba(0,0,0,0) 46%,#000 46.9%);
+  mask-image:radial-gradient(circle at 72% 26%,rgba(0,0,0,0) 46%,#000 46.9%);
+  filter:drop-shadow(0 0 14px rgba(255,255,255,.07)) drop-shadow(0 0 46px rgba(255,255,255,.035));
+  animation:breathe 9s ease-in-out infinite;}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.015);}}
+.wrap{position:relative;z-index:1;max-width:min(560px,90vw);animation:up .7s var(--ease-out) both;}
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.code{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--t-cap);margin-bottom:18px;}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(38px,8vw,68px);font-weight:300;line-height:.97;
+  letter-spacing:-.032em;margin:0 0 20px;}
+h1 .dim{color:#6a6a6a;display:block;}
+p{font-size:16px;line-height:1.6;color:var(--t2);max-width:400px;margin:0 0 32px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--acc);color:var(--acc-d);
+  font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;text-decoration:none;
+  padding:12px 28px;border-radius:10px;border:none;cursor:pointer;
+  box-shadow:0 1px 2px rgba(0,0,0,.15),0 4px 16px -4px rgba(74,222,128,.55);
+  transition:transform .16s var(--ease-out),box-shadow .16s var(--ease-out);}
+.btn:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(0,0,0,.18),0 10px 26px -4px rgba(74,222,128,.66);}
+.btn:active{transform:translateY(0) scale(.985);}
+.btn:focus-visible{outline:2px solid rgba(74,222,128,.55);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){.moon,.wrap{animation:none;}.btn{transition:none;}}
+</style>
+</head>
+<body>
+<div class="moon" aria-hidden="true"></div>
+<main class="wrap">
+  <div class="code">Error 404</div>
+  <h1>lost in<span class="dim">the dark.</span></h1>
+  <p>This page doesn't exist — or it slipped away while you weren't looking. Everything else is still where you left it.</p>
+  <a class="btn" href="/">back to Nox</a>
+</main>
+<style id="nox-all-controls-motion">
+/* Visible hover feedback is independent of reduced-motion and primary pointer type. */
+:is(button,a[href],[role="button"],[role="tab"],[role="switch"],[role="checkbox"],[role="radio"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="file"],input[type="color"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex="0"]:not(input,textarea,[contenteditable])){--nox-hover-scale:1.025;--nox-hover-tint:color-mix(in srgb,var(--acc,#52d1a4) 15%,transparent);--nox-hover-edge:color-mix(in srgb,var(--acc-readable,var(--acc,#52d1a4)) 48%,transparent);transition:box-shadow .18s ease,background-color .18s ease,border-color .18s ease,color .18s ease,filter .18s ease,translate .18s cubic-bezier(.22,.8,.2,1),scale .18s cubic-bezier(.22,.8,.2,1),transform .22s cubic-bezier(.22,.8,.2,1),opacity .18s ease!important}
+:is(.icon-btn,.modal-close,.pw-eye,.owl-btn,.task-note-btn,.task-del-btn,.lang-btn,.sl-chk,.block-todo-chk){--nox-hover-scale:1.07}
+:is(.topbar-tab,.tab,.mnav-item,.set-nav-item,.ai-hist-main,.reward-choice,.sec-task,.faq-q,.page-tree-item,.wtask){--nox-hover-scale:1.012}
+@media(any-hover:hover){:is(button,a[href],[role="button"],[role="tab"],[role="switch"],[role="checkbox"],[role="radio"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="file"],input[type="color"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex="0"]:not(input,textarea,[contenteditable])):not(:disabled,[aria-disabled="true"],[inert],[inert] *):not(:has(input:disabled)):hover{box-shadow:inset 0 0 0 999px var(--nox-hover-tint),0 0 0 1px var(--nox-hover-edge)!important;filter:brightness(1.12)!important;}}
+:is(button,a[href],[role="button"],[role="tab"],[role="switch"],[role="checkbox"],[role="radio"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="file"],input[type="color"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex="0"]:not(input,textarea,[contenteditable])):not(:disabled,[aria-disabled="true"],[inert],[inert] *):not(:has(input:disabled))[data-nox-over]{box-shadow:inset 0 0 0 999px var(--nox-hover-tint),0 0 0 1px var(--nox-hover-edge)!important;filter:brightness(1.12)!important;}
+@media(prefers-reduced-motion:no-preference){
+ @media(any-hover:hover){:is(button,a[href],[role="button"],[role="tab"],[role="switch"],[role="checkbox"],[role="radio"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="file"],input[type="color"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex="0"]:not(input,textarea,[contenteditable])):not(:disabled,[aria-disabled="true"],[inert],[inert] *):not(:has(input:disabled)):hover{translate:0 -2px!important;scale:var(--nox-hover-scale,1.025)!important;}}
+ :is(button,a[href],[role="button"],[role="tab"],[role="switch"],[role="checkbox"],[role="radio"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="file"],input[type="color"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex="0"]:not(input,textarea,[contenteditable])):not(:disabled,[aria-disabled="true"],[inert],[inert] *):not(:has(input:disabled))[data-nox-over]{translate:0 -2px!important;scale:var(--nox-hover-scale,1.025)!important;}
+ :is(button,a[href],[role="button"],[role="tab"],[role="switch"],[role="checkbox"],[role="radio"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="file"],input[type="color"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex="0"]:not(input,textarea,[contenteditable])):not(:disabled,[aria-disabled="true"],[inert],[inert] *):not(:has(input:disabled)):active{translate:0 0!important;scale:.95!important;transition-duration:90ms!important}
+}
+:is(button,a[href],[role="button"],[role="tab"],[role="switch"],[role="checkbox"],[role="radio"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="file"],input[type="color"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex="0"]:not(input,textarea,[contenteditable])):not(:disabled,[aria-disabled="true"],[inert],[inert] *):not(:has(input:disabled)):active{box-shadow:inset 0 0 0 999px color-mix(in srgb,var(--acc,#52d1a4) 24%,transparent)!important;filter:brightness(.94)!important}
+:is(button,a[href],[role="button"],[role="tab"],[role="switch"],[role="checkbox"],[role="radio"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="file"],input[type="color"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex="0"]:not(input,textarea,[contenteditable])):focus-visible{outline:2px solid var(--acc-readable,var(--acc,#52d1a4))!important;outline-offset:3px}
+:is(.reward-choice,.sec-task,.accent-custom-picker,.imp-drop,.upload-zone)>input{translate:none!important;scale:none!important;filter:none!important;box-shadow:none!important}
+/* Disabled controls stay visibly disabled, not falsely actionable. */
+:is(button,input):disabled,[aria-disabled="true"]{translate:none!important;scale:none!important;filter:none!important}
+@media(prefers-reduced-motion:reduce){:is(button,a[href],[role="button"],[role="tab"],[role="switch"],[role="checkbox"],[role="radio"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type="button"],input[type="submit"],input[type="reset"],input[type="checkbox"],input[type="radio"],input[type="file"],input[type="color"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex="0"]:not(input,textarea,[contenteditable])){translate:none!important;scale:none!important;transition:none!important}}
+
+</style>
+<script id="nox-pointer-feedback">
+(()=>{
+ const selector=":is(button,a[href],[role=\"button\"],[role=\"tab\"],[role=\"switch\"],[role=\"checkbox\"],[role=\"radio\"],.mf-moon,.mf-skip,.pm-card,.pm-support,.logo,.theme-tog,.switch-tog,.forgot-link,.auth-switch span,.auth-back,.topbar-logo,.cal-d:not(.other),.sl-chk,.wtask,.wadd,.hab-cell,.ambient-btn,.page-tree-item,.page-icon-btn,.block-toggle-arrow,.slash-item,.emoji-tab,.emoji-none,.set-nav-item,.data-btn,.imp-drop,.celeb-pop,.room-code,.track-swatch,.cover-opt,.wk-sec-row,.pro-lock-badge,.letter-past-hdr,.nx-toast,.consent-row,.ref-code,.tsw,.upload-zone,.dyn-island,.study-day,.study-color,summary,input[type=\"button\"],input[type=\"submit\"],input[type=\"reset\"],input[type=\"checkbox\"],input[type=\"radio\"],input[type=\"file\"],input[type=\"color\"],select,.reward-choice,.sec-task,.accent-custom-picker,[onclick]:not(.modal-overlay,.mobile-nav-bg,#land-intro):not(:has(button,input,a[href],[onclick])),[data-nox-control],[data-action],[tabindex=\"0\"]:not(input,textarea,[contenteditable]))";
+ let hovered=null;
+ function clear(){hovered?.removeAttribute('data-nox-over');hovered=null;}
+ document.addEventListener('pointerover',event=>{
+  if(event.pointerType==='touch')return;
+  const path=event.composedPath().filter(n=>n instanceof HTMLElement);
+  let control=path.find(n=>n.matches(selector));
+  // Legacy controls using assigned handlers or pointer styling are covered on interaction too.
+  if(!control)control=path.find(n=>n!==document.body&&n!==document.documentElement&&!n.matches('.modal-overlay,.mobile-nav-bg,#land-intro,input,textarea,[contenteditable]')&&(typeof n.onclick==='function'||getComputedStyle(n).cursor==='pointer'));
+  if(!control||control.closest('[inert],[aria-disabled="true"]')||control.matches(':disabled,.cal-d.other')||control.querySelector('input:disabled')){clear();return;}
+  if(hovered===control)return;clear();control.setAttribute('data-nox-control','');control.setAttribute('data-nox-over','');hovered=control;
+ },{passive:true});
+ document.addEventListener('pointerout',event=>{if(hovered&&!hovered.contains(event.relatedTarget))clear();},{passive:true});
+ document.addEventListener('pointerdown',event=>{if(event.pointerType==='touch')clear();},{passive:true});
+ window.addEventListener('blur',clear);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)clear();});
+})();
+</script>
+</body>
+</html>

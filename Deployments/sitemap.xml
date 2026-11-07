@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Public, canonical Nox pages. In-page anchors are deliberately omitted. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://noxlabapp.vercel.app/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://noxlabapp.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://noxlabapp.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://noxlabapp.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://noxlabapp.vercel.app/"/>
+  </url>
+  <url>
+    <loc>https://noxlabapp.vercel.app/privacy</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://noxlabapp.vercel.app/terms</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://noxlabapp.vercel.app/refund</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://noxlabapp.vercel.app/ownership</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 310" fill="none">
+<defs><linearGradient id="sky"><stop stop-color="#233c4b"/><stop offset=".6" stop-color="#526976"/><stop offset="1" stop-color="#ad8a75"/></linearGradient><linearGradient id="rock" x2="0" y2="1"><stop stop-color="#69828b"/><stop offset="1" stop-color="#354d5b"/></linearGradient><pattern id="etch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(27)"><path d="M0 0v6" stroke="#efe4ce" stroke-opacity=".3"/></pattern></defs>
+<path fill="url(#sky)" d="M0 0h760v310H0z"/><circle cx="570" cy="84" r="42" fill="#f1ce96"/><circle cx="570" cy="84" r="49" stroke="#efd4aa" stroke-opacity=".5" stroke-dasharray="1 4"/>
+<path fill="#94a4a2" d="m0 224 88-40 29 9 66-46 39 22 61-49 38 24 43-13 38 17 68-59 25 23 34-6 22 23 32-31 40 25 28-9 52 41 57-4v159H0z"/>
+<path fill="url(#rock)" d="m0 232 67-33 54 6 76-41 39 20 53-28 31 13 57-41 34 10 51-45 28-3 38-47 18 27 20 9 24 35 33 7 22 30 26-9 89 50v118H0z"/>
+<path fill="#d4d5bf" d="m409 140 53-47 28-3 38-47 18 27 20 9 24 35-30-19-10 2-18-23-10 11-3-18-26 34-21 5-13 16-8-6z"/>
+<path fill="url(#etch)" d="m528 43 11 50 30 57-23-15-16-37-18-2-49 58 11-27-36 26 45-50 11-13z"/>
+<path fill="#304958" d="m0 215 53 10 61-14 94 25 62-10 55 22 61-32 40 4 68-49 33-10 25-36 38 18 19 25 44-17 29 14 78-34v179H0z"/>
+<path fill="#203844" d="m0 254 79-16 71 21 88-11 52 18 65-8 61 16 37-12 39 4 63-30 51 5 63-41 33 5 58-31v136H0z"/>
+<g stroke="#9eb4ae" opacity=".5"><path d="m385 226 33-8 15-13 62-33 34-4 23-31 24 13m-159 84 22-15 60-34 37-9 20-26m45 24 22-12 20 4 38-15m-157 86 28-12 49 5 69-44 30 2m-154 56 57-8 68-40 30 1"/></g>
+<path d="M385 319q-25-21 37-40t29-31q-30-11 16-26t29-23q-11-8 19-25t-2-27q-16-10 9-29t6-22l2-17" stroke="#e8c78b" stroke-width="2.3" stroke-linecap="round" stroke-dasharray="3 5"/>
+<g fill="#f0d49e" stroke="#2a424c" stroke-width="2"><circle cx="451" cy="248" r="4"/><circle cx="496" cy="199" r="4"/><circle cx="522" cy="118" r="4"/></g></svg>

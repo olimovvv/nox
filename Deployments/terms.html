@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Terms — Nox</title>
+<meta name="description" content="What Nox is, what you get on Free and Pro, how payment works, and the rules on both sides."/>
+<meta name="author" content="Behruzbek Olimov"/>
+<meta name="copyright" content="Copyright © 2026 Behruzbek Olimov. All rights reserved."/>
+<link rel="canonical" href="https://noxlabapp.vercel.app/terms"/>
+<link rel="icon" href="icon-192.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0c0c;--s1:#141414;--s2:#1a1a1a;--bd:#232323;--bd2:#2c2c2c;
+  --t1:#f0f0f0;--t2:#a8a8a8;--t-cap:#7d7d7d;--acc:#52D1A4;
+}
+html.light{
+  --bg:#efe6d3;--s1:#f7f0e2;--s2:#f2e9d8;--bd:#ded2b8;--bd2:#d3c5a6;
+  --t1:#231e13;--t2:#4a4234;--t-cap:#6e644e;--acc:#147150;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--bg);color:var(--t1);
+  font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.72;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  padding:0 22px 90px;
+}
+.wrap{max-width:720px;margin:0 auto;}
+nav{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:22px 0;border-bottom:.5px solid var(--bd);flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--t1);}
+.brand span{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:500;letter-spacing:-.01em;}
+.ctrl{display:flex;gap:6px;align-items:center;}
+.ctrl button{
+  background:var(--s1);border:.5px solid var(--bd2);color:var(--t2);
+  font-family:'Inter',sans-serif;font-size:11.5px;padding:6px 10px;border-radius:8px;cursor:pointer;
+  transition:color .18s ease,border-color .18s ease,background-color .18s ease;
+}
+.ctrl button:hover{color:var(--t1);}
+.ctrl button.on{color:var(--acc);border-color:var(--acc);}
+header{padding:52px 0 30px;}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,6vw,46px);font-weight:700;line-height:1.05;letter-spacing:-.025em;text-wrap:balance;}
+.upd{font-size:12px;color:var(--t-cap);margin-top:12px;font-variant-numeric:tabular-nums;}
+.lede{font-size:16.5px;color:var(--t2);margin-top:18px;max-width:58ch;text-wrap:pretty;}
+h2{
+  font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:500;
+  letter-spacing:-.012em;margin:42px 0 12px;text-wrap:balance;
+}
+p{margin-bottom:14px;color:var(--t2);text-wrap:pretty;}
+p strong,li strong{color:var(--t1);font-weight:500;}
+ul{margin:0 0 16px 0;padding-left:0;list-style:none;}
+li{position:relative;padding-left:18px;margin-bottom:9px;color:var(--t2);text-wrap:pretty;}
+li::before{content:"";position:absolute;left:2px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--bd2);}
+.callout{
+  background:var(--s1);border:.5px solid var(--bd2);border-left:2px solid var(--acc);
+  border-radius:0 10px 10px 0;padding:16px 18px;margin:18px 0;
+}
+.callout p:last-child{margin-bottom:0;}
+.todo{border-left-color:#e0a33a;}
+a{color:var(--acc);}
+footer{margin-top:56px;padding-top:22px;border-top:.5px solid var(--bd);font-size:12.5px;color:var(--t-cap);}
+footer a{color:var(--t2);text-decoration:none;border-bottom:.5px solid var(--bd2);}
+footer a:hover{color:var(--acc);border-bottom-color:var(--acc);}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+<link rel="stylesheet" href="assets/legal.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="/">
+      <svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11.19 2A9 9 0 1 0 19.8 12.9 7 7 0 1 1 11.19 2Z" fill="var(--t1)"/></svg>
+      <span>nox</span>
+    </a>
+    <div class="ctrl">
+      <button id="l-en" onclick="setL('en')">EN</button>
+      <button id="l-uz" onclick="setL('uz')">UZ</button>
+      <button id="l-ru" onclick="setL('ru')">RU</button>
+      <button id="thm" onclick="setT()" aria-label="Theme">☀︎</button>
+    </div>
+  </nav>
+  <main id="doc"></main>
+  <footer>
+    <a href="/">&larr; <span id="back">back to Nox</span></a>
+    &nbsp;·&nbsp; <a href="privacy.html" id="f-priv">Privacy</a>
+    &nbsp;·&nbsp; <a href="refund.html" id="f-ref">Refunds</a>
+    &nbsp;·&nbsp; <a href="ownership.html">Ownership</a>
+  </footer>
+</div>
+
+<script>
+const CONTACT_EMAIL = "noxlab.help@gmail.com";
+
+// ⚠️ FILL THESE IN BEFORE TAKING PAYMENTS.
+// Terms are a contract, and a contract needs a named party. Leave any of these empty and the page
+// prints a visible warning instead of quietly pretending the section is complete — the same
+// deliberate behaviour CONTACT_EMAIL has on the privacy page.
+const BIZ = {
+  name:    "Behruzbek Olimov",
+  status:  "individual creator (jismoniy shaxs; not a registered company)",
+  regno:   "",   // certificate / registration number
+  address: "Uzbekistan",
+};
+const BIZ_READY = !!(BIZ.name && BIZ.status);
+
+const DOC = {
+en:{
+  back:"back to Nox",
+  title:"Terms of Service",
+  upd:"Last updated: 12 September 2026",
+  lede:"Plain terms for a small product. This page says who runs Nox, what you get, what you pay, and what each of us may expect from the other.",
+  biz_h:"Who you are dealing with",
+  biz_todo:"⚠️ Business details are not filled in yet. Set BIZ in terms.html before taking payments — a contract needs a named party.",
+  biz_p:"Nox is operated by:",
+  biz_run:"Contact for anything in this document:",
+  s:[
+    ["Agreeing to this",[
+      "By creating an account you accept these terms and the <a href='privacy.html'>Privacy Policy</a>. If you do not accept them, do not create an account.",
+      "You need to be at least <strong>13</strong> to use Nox. To buy Pro you need to be <strong>18</strong>, or have a parent or guardian make the payment for you.",
+      "One account is for one person. Do not share a login.",
+      "For the purposes of the law of Uzbekistan this document is a <strong>public offer</strong>: the terms are the same for everyone and are not negotiated one by one. Creating an account accepts the free service; <strong>sending a payment for Pro accepts the paid one</strong>, and the approved payment record is the confirmation of that contract. No signature is needed."
+    ]],
+    ["What Nox is",[
+      "Nox is a personal weekly planner: tasks, habits, notes, goals, focus sessions, finance entries, and a few extras built around them. It is a single-user tool. Focus Rooms are the one shared surface, and they exist for working alongside other people, not for collaborating on the same data.",
+      "It is an <strong>early-stage product built by one person</strong>. Features change, and some are still being finished. That is stated here rather than implied."
+    ]],
+    ["Free and Pro",[
+      "<strong>Free</strong> covers daily and weekly planning with <strong>3 tasks a day</strong>, up to <strong>3 habits</strong>, and <strong>5 each</strong> of goals, projects and notes. No card, no expiry.",
+      "<strong>Pro</strong> removes those limits and adds the focus timer, task sections, AI planning and every feature added later.",
+      "Free is not a trial that ends. If you never upgrade, nothing is taken away."
+    ]],
+    ["Paying for Pro",[
+      "Pro costs <strong>14,999 so'm for one month</strong>. That price is shown before you pay and includes everything — there are no additional or hidden charges.",
+      "There is no payment gateway yet, so payment is a <strong>manual card transfer</strong>: you send the amount, upload a screenshot, and we check it by hand and switch Pro on.",
+      "Because a person checks each payment, activation is not instant. We aim to do it the same day.",
+      "<strong>Pro never renews on its own.</strong> There is no stored card and no recurring charge. One payment buys one calendar month from the moment it is approved; if you pay again while Pro is still active, the new month is added to the end.",
+      "If you extend or cancel, you can see the exact end date in Settings → Subscription."
+    ]],
+    ["Refunds",[
+      "There is a real refund policy and it is short: <strong>ask within 14 days and you get your money back.</strong> The full terms, including how the money is returned, are on the <a href='refund.html'>Refund Policy</a> page."
+    ]],
+    ["Free Pro from referrals",[
+      "Inviting someone gives you both <strong>7 extra days</strong> of Pro, and every third person you bring gives you <strong>30 days</strong> instead.",
+      "These days are a gift, not a purchase. They have no cash value and are not refundable.",
+      "Do not fake invitations — inviting accounts you control, or spamming the link, can cost you the bonus days and the account."
+    ]],
+    ["What you write stays yours",[
+      "Your tasks, notes, habits, goals, files and letters are <strong>yours</strong>. We claim no ownership of them.",
+      "You give us only the narrow permission needed to run the service: to store your content, and to show it back to you on your devices. Nothing else. It is not read for advertising, not sold, and not used to train anything.",
+      "You can export everything as one JSON file at any time from Settings → Your data, and you can delete all of it, including the login, from Settings → Danger zone."
+    ]],
+    ["Rules on your side",[
+      "Do not upload anything illegal, anything that is not yours to upload, or anything designed to harm other people.",
+      "Do not use Focus Rooms — including voice — to harass, record or abuse other members.",
+      "Do not try to break, overload or work around the app's limits, read other people's data, or resell access to Nox.",
+      "Do not upload other people's personal data. Nox is a personal planner, not a place to keep records about other people."
+    ]],
+    ["Focus Rooms and voice",[
+      "In a room, other members can see your username, avatar, whether you are focusing or away, and the task you chose to show.",
+      "<strong>Voice is peer-to-peer.</strong> It travels directly between browsers, is never recorded, and never passes through our servers. Your microphone is only ever requested when you press the microphone button.",
+      "We can close a room or remove someone from one if it is being used to harm other members."
+    ]],
+    ["AI features",[
+      "The AI panel, task breakdown, evening planner and weekly review send the relevant text — task and habit titles, dates, and your question — to a third-party AI provider so it can answer. This is asked about once, before the first use.",
+      "Everything the AI suggests is a <strong>proposal you confirm</strong>. Nothing is written into your week without you pressing a button.",
+      "AI output can be wrong. Do not rely on it for anything medical, legal, financial or otherwise consequential."
+    ]],
+    ["Availability",[
+      "Nox is provided as it is, with no uptime guarantee. It depends on services we do not run, and it can be unavailable for maintenance or for reasons outside our control.",
+      "<strong>Keep your own backups</strong> of anything you cannot afford to lose. The export in Settings exists for exactly that.",
+      "Features may be added, changed or removed. If something you paid for is removed while your Pro month is running, you may ask for a refund of the unused part."
+    ]],
+    ["Ending it",[
+      "You can stop at any time. Deleting your account from Settings removes your data and the login itself.",
+      "We may suspend or close an account that breaks the rules above, or that we are legally required to close. Where it is fair and possible we will say why first, and refund any unused Pro time.",
+      "Closing your account does not by itself entitle you to a refund outside the refund policy."
+    ]],
+    ["Liability",[
+      "Nox is a planner. It is not a backup service, not a medical, legal or financial adviser, and not a guarantee that anything gets done.",
+      "To the extent the law allows, our total liability to you is limited to <strong>what you actually paid us in the 12 months before the problem</strong>. If you are on the Free plan, that is nothing — which is the honest consequence of it being free.",
+      "Nothing here limits liability that cannot legally be limited, including for death, personal injury, or fraud."
+    ]],
+    ["Changes to these terms",[
+      "If these terms change in a way that matters, the date at the top changes and the app tells you the next time you open it.",
+      "Continuing to use Nox after a change means you accept it. If you do not, you can export your data and delete your account."
+    ]],
+    ["Law",[
+      "These terms are governed by the law of the <strong>Republic of Uzbekistan</strong>, and disputes belong to the courts there.",
+      "If you are a consumer, this does not take away rights your own country's law gives you."
+    ]]
+  ],
+  contact_h:"Questions",
+  contact_p:"Anything in this document — write to:"
+},
+uz:{
+  back:"Nox'ga qaytish",
+  title:"Foydalanish shartlari",
+  upd:"Oxirgi yangilanish: 2026-yil 12-sentabr",
+  lede:"Kichik mahsulot uchun oddiy shartlar. Bu sahifada Nox'ni kim yuritishi, siz nima olishingiz, nima to'lashingiz va bir-birimizdan nima kutishimiz yozilgan.",
+  biz_h:"Kim bilan ish qilyapsiz",
+  biz_todo:"⚠️ Biznes ma'lumotlari hali to'ldirilmagan. To'lov qabul qilishdan oldin terms.html ichidagi BIZ ni to'ldiring — shartnomada tomon nomi bo'lishi shart.",
+  biz_p:"Nox'ni yuritadi:",
+  biz_run:"Ushbu hujjat bo'yicha aloqa:",
+  s:[
+    ["Roziligingiz",[
+      "Akkaunt yaratganingizda ushbu shartlarni va <a href='privacy.html'>Maxfiylik siyosatini</a> qabul qilasiz. Qabul qilmasangiz, akkaunt yaratmang.",
+      "Nox'dan foydalanish uchun kamida <strong>13</strong> yoshda bo'lishingiz kerak. Pro sotib olish uchun <strong>18</strong> yosh, yoki to'lovni ota-onangiz/vasiyingiz amalga oshirishi kerak.",
+      "Bitta akkaunt — bitta odam uchun. Loginni birov bilan bo'lishmang.",
+      "O'zbekiston qonunchiligi ma'nosida ushbu hujjat <strong>ommaviy oferta</strong> hisoblanadi: shartlar hamma uchun bir xil va alohida kelishilmaydi. Akkaunt yaratish bepul xizmatni qabul qilishdir; <strong>Pro uchun to'lov yuborish esa pullik xizmatni qabul qilish (aksept)</strong>, tasdiqlangan to'lov yozuvi esa shu shartnomaning tasdig'i. Imzo talab qilinmaydi."
+    ]],
+    ["Nox nima",[
+      "Nox — shaxsiy haftalik rejalashtiruvchi: vazifalar, odatlar, eslatmalar, maqsadlar, fokus seanslari, moliya yozuvlari va ular atrofidagi bir necha qo'shimcha. Bu bitta foydalanuvchi uchun mo'ljallangan vosita. Focus Rooms — yagona umumiy joy, u birga ishlash uchun, umumiy ma'lumotni tahrirlash uchun emas.",
+      "Bu <strong>bir kishi tomonidan qilingan, erta bosqichdagi mahsulot</strong>. Imkoniyatlar o'zgaradi, ba'zilari hali tugallanmoqda. Buni yashirmay aytamiz."
+    ]],
+    ["Bepul va Pro",[
+      "<strong>Bepul</strong> tarifda kunlik va haftalik reja, <strong>kuniga 3 ta vazifa</strong>, <strong>3 tagacha odat</strong> va <strong>5 tadan</strong> maqsad, loyiha va eslatma bor. Karta ham, muddat ham kerak emas.",
+      "<strong>Pro</strong> bu chegaralarni olib tashlaydi hamda fokus taymer, bo'limlar, AI rejalashtirish va keyin qo'shiladigan barcha imkoniyatlarni beradi.",
+      "Bepul tarif tugaydigan sinov muddati emas. Pro olmasangiz ham hech narsa tortib olinmaydi."
+    ]],
+    ["Pro uchun to'lov",[
+      "Pro <strong>bir oy uchun 14 999 so'm</strong>. Bu narx to'lovdan oldin ko'rsatiladi va hammasini o'z ichiga oladi — qo'shimcha yoki yashirin to'lov yo'q.",
+      "Hozircha to'lov shlyuzi yo'q, shuning uchun to'lov <strong>qo'lda karta o'tkazmasi</strong>: siz summani yuborasiz, skrinshot yuklaysiz, biz uni qo'lda tekshirib Pro'ni yoqamiz.",
+      "Har bir to'lovni odam tekshirgani uchun faollashtirish bir zumda bo'lmaydi. Biz uni o'sha kunning o'zida qilishga harakat qilamiz.",
+      "<strong>Pro hech qachon o'z-o'zidan uzaytirilmaydi.</strong> Saqlangan karta ham, takroriy to'lov ham yo'q. Bitta to'lov tasdiqlangan paytdan boshlab bir oy beradi; Pro amal qilib turganda yana to'lasangiz, yangi oy oxiriga qo'shiladi.",
+      "Aniq tugash sanasini Sozlamalar → Obuna bo'limida ko'rasiz."
+    ]],
+    ["Pulni qaytarish",[
+      "Haqiqiy qaytarish siyosati bor va u qisqa: <strong>14 kun ichida so'rasangiz, pulingiz qaytariladi.</strong> To'liq shartlar va pul qanday qaytarilishi <a href='refund.html'>Pulni qaytarish siyosati</a> sahifasida."
+    ]],
+    ["Taklif orqali bepul Pro",[
+      "Kimnidir taklif qilsangiz, ikkalangiz ham <strong>7 kun</strong> qo'shimcha Pro olasiz, har uchinchi odam uchun esa <strong>30 kun</strong>.",
+      "Bu kunlar sovg'a, sotib olingan narsa emas. Ularning pul qiymati yo'q va qaytarilmaydi.",
+      "Soxta taklif qilmang — o'zingizga tegishli akkauntlarni taklif qilish yoki havolani spam qilish bonus kunlarni ham, akkauntni ham yo'qotishi mumkin."
+    ]],
+    ["Yozganlaringiz sizniki bo'lib qoladi",[
+      "Vazifalar, eslatmalar, odatlar, maqsadlar, fayllar va xatlar — <strong>sizniki</strong>. Biz ularga egalik da'vo qilmaymiz.",
+      "Bizga faqat xizmatni ishlatish uchun zarur bo'lgan tor ruxsatni berasiz: kontentingizni saqlash va uni qurilmalaringizda sizga qaytarib ko'rsatish. Boshqa hech narsa. U reklama uchun o'qilmaydi, sotilmaydi va hech narsani o'rgatish uchun ishlatilmaydi.",
+      "Istalgan payt Sozlamalar → Ma'lumotlaringiz orqali hammasini bitta JSON faylda yuklab olasiz, Sozlamalar → Xavfli zona orqali esa login bilan birga butunlay o'chirasiz."
+    ]],
+    ["Sizning tomoningizdagi qoidalar",[
+      "Noqonuniy narsa, sizga tegishli bo'lmagan narsa yoki boshqalarga zarar yetkazish uchun mo'ljallangan narsa yuklamang.",
+      "Focus Rooms'ni — jumladan ovozni — boshqalarni bezovta qilish, yozib olish yoki haqorat qilish uchun ishlatmang.",
+      "Ilovani buzishga, ortiqcha yuklashga, chegaralarni aylanib o'tishga, boshqalarning ma'lumotini o'qishga yoki Nox'ga kirishni qayta sotishga urinmang.",
+      "Boshqa odamlarning shaxsiy ma'lumotini yuklamang. Nox — shaxsiy rejalashtiruvchi, birovlar haqida yozuv yuritadigan joy emas."
+    ]],
+    ["Focus Rooms va ovoz",[
+      "Xonada boshqa a'zolar sizning username'ingiz, avataringiz, fokusdami yoki uzoqdaligingiz va ko'rsatishni tanlagan vazifangizni ko'radi.",
+      "<strong>Ovoz peer-to-peer.</strong> U brauzerlar o'rtasida to'g'ridan-to'g'ri boradi, hech qachon yozib olinmaydi va serverlarimizdan o'tmaydi. Mikrofon faqat siz mikrofon tugmasini bosganingizda so'raladi.",
+      "Agar xona boshqalarga zarar yetkazish uchun ishlatilayotgan bo'lsa, uni yopishimiz yoki a'zoni chiqarishimiz mumkin."
+    ]],
+    ["AI imkoniyatlari",[
+      "AI paneli, vazifani parchalash, kechki rejalashtiruvchi va haftalik sharh tegishli matnni — vazifa va odat nomlari, sanalar hamda savolingizni — javob olish uchun uchinchi tomon AI provayderiga yuboradi. Bu haqda birinchi ishlatishdan oldin bir marta so'raladi.",
+      "AI taklif qilgan hamma narsa — <strong>siz tasdiqlaydigan taklif</strong>. Siz tugma bosmaguningizcha haftangizga hech narsa yozilmaydi.",
+      "AI javobi noto'g'ri bo'lishi mumkin. Tibbiy, huquqiy, moliyaviy yoki jiddiy oqibatli masalalarda unga tayanmang."
+    ]],
+    ["Ishlash kafolati",[
+      "Nox qanday bo'lsa shundayligicha taqdim etiladi, uzluksiz ishlash kafolati yo'q. U biz yuritmaydigan xizmatlarga bog'liq va texnik ishlar yoki bizga bog'liq bo'lmagan sabablarga ko'ra ishlamay qolishi mumkin.",
+      "<strong>Yo'qotib bo'lmaydigan narsalarning nusxasini o'zingiz saqlang.</strong> Sozlamalardagi eksport aynan shuning uchun bor.",
+      "Imkoniyatlar qo'shilishi, o'zgarishi yoki olib tashlanishi mumkin. Agar siz to'lagan narsa Pro oyingiz davomida olib tashlansa, ishlatilmagan qismi uchun pul qaytarishni so'rashingiz mumkin."
+    ]],
+    ["Tugatish",[
+      "Istalgan payt to'xtatishingiz mumkin. Sozlamalardan akkauntni o'chirish ma'lumotlaringizni va loginning o'zini olib tashlaydi.",
+      "Yuqoridagi qoidalarni buzgan yoki qonun talab qilgan akkauntni to'xtatishimiz yoki yopishimiz mumkin. Adolatli va imkoni bo'lsa, avval sababini aytamiz va ishlatilmagan Pro vaqtini qaytaramiz.",
+      "Akkauntni yopishning o'zi qaytarish siyosatidan tashqarida pul qaytarish huquqini bermaydi."
+    ]],
+    ["Javobgarlik",[
+      "Nox — rejalashtiruvchi. U zaxira nusxa xizmati emas, tibbiy, huquqiy yoki moliyaviy maslahatchi emas va biror ish bajarilishining kafolati emas.",
+      "Qonun ruxsat bergan darajada, oldingizdagi umumiy javobgarligimiz <strong>muammodan oldingi 12 oyda bizga to'lagan summangiz</strong> bilan cheklanadi. Bepul tarifda bo'lsangiz, bu nol — bu bepullikning halol oqibati.",
+      "Bu yerda qonunan cheklab bo'lmaydigan javobgarlik cheklanmaydi: o'lim, shaxsga jismoniy zarar yoki firibgarlik."
+    ]],
+    ["Shartlarning o'zgarishi",[
+      "Agar shartlar muhim tarzda o'zgarsa, yuqoridagi sana o'zgaradi va ilova buni keyingi ochganingizda aytadi.",
+      "O'zgarishdan keyin Nox'dan foydalanishda davom etish — uni qabul qilish demak. Rozi bo'lmasangiz, ma'lumotlaringizni yuklab olib akkauntni o'chirishingiz mumkin."
+    ]],
+    ["Qonun",[
+      "Ushbu shartlar <strong>O'zbekiston Respublikasi</strong> qonunchiligi bilan tartibga solinadi, nizolar esa o'sha yerdagi sudlarga tegishli.",
+      "Agar siz iste'molchi bo'lsangiz, bu o'z davlatingiz qonuni bergan huquqlarni bekor qilmaydi."
+    ]]
+  ],
+  contact_h:"Savollar",
+  contact_p:"Ushbu hujjatdagi istalgan narsa bo'yicha yozing:"
+},
+ru:{
+  back:"вернуться в Nox",
+  title:"Условия использования",
+  upd:"Последнее обновление: 12 сентября 2026",
+  lede:"Простые условия для небольшого продукта. Здесь написано, кто ведёт Nox, что вы получаете, сколько платите и чего мы вправе ожидать друг от друга.",
+  biz_h:"С кем вы имеете дело",
+  biz_todo:"⚠️ Реквизиты ещё не заполнены. Заполните BIZ в terms.html до приёма платежей — у договора должна быть названная сторона.",
+  biz_p:"Nox ведёт:",
+  biz_run:"Контакт по этому документу:",
+  s:[
+    ["Согласие",[
+      "Создавая аккаунт, вы принимаете эти условия и <a href='privacy.html'>Политику конфиденциальности</a>. Если вы их не принимаете — не создавайте аккаунт.",
+      "Для использования Nox нужно быть не младше <strong>13</strong> лет. Для покупки Pro — <strong>18</strong>, либо оплату должен произвести родитель или опекун.",
+      "Один аккаунт — один человек. Не передавайте логин.",
+      "В смысле законодательства Узбекистана этот документ является <strong>публичной офертой</strong>: условия одинаковы для всех и не согласуются индивидуально. Создание аккаунта — акцепт бесплатной услуги; <strong>отправка платежа за Pro — акцепт платной</strong>, а подтверждённая запись о платеже — подтверждение этого договора. Подпись не требуется."
+    ]],
+    ["Что такое Nox",[
+      "Nox — личный недельный планер: задачи, привычки, заметки, цели, сессии фокуса, финансовые записи и несколько дополнений вокруг них. Это инструмент для одного человека. Focus Rooms — единственная общая поверхность, и она для работы рядом с другими, а не для совместного редактирования данных.",
+      "Это <strong>продукт ранней стадии, сделанный одним человеком</strong>. Функции меняются, часть ещё дорабатывается. Мы говорим это прямо."
+    ]],
+    ["Бесплатный тариф и Pro",[
+      "<strong>Бесплатно</strong> — дневное и недельное планирование, <strong>3 задачи в день</strong>, до <strong>3 привычек</strong> и по <strong>5</strong> целей, проектов и заметок. Без карты и без срока.",
+      "<strong>Pro</strong> снимает эти лимиты и добавляет таймер фокуса, разделы задач, AI-планирование и все функции, которые появятся позже.",
+      "Бесплатный тариф — не пробный период. Если вы никогда не купите Pro, у вас ничего не отнимут."
+    ]],
+    ["Оплата Pro",[
+      "Pro стоит <strong>14 999 сум за месяц</strong>. Цена показывается до оплаты и включает всё — никаких дополнительных или скрытых платежей.",
+      "Платёжного шлюза пока нет, поэтому оплата — это <strong>ручной перевод на карту</strong>: вы отправляете сумму, загружаете скриншот, мы проверяем вручную и включаем Pro.",
+      "Поскольку каждый платёж проверяет человек, активация не мгновенная. Мы стремимся сделать это в тот же день.",
+      "<strong>Pro никогда не продлевается сам.</strong> Нет сохранённой карты и нет регулярного списания. Один платёж даёт один календарный месяц с момента подтверждения; если оплатить снова, пока Pro ещё действует, новый месяц добавится в конец.",
+      "Точную дату окончания видно в Настройки → Подписка."
+    ]],
+    ["Возврат",[
+      "Политика возврата существует и она короткая: <strong>попросите в течение 14 дней — и деньги вернутся.</strong> Полные условия и порядок возврата — на странице <a href='refund.html'>Политика возврата</a>."
+    ]],
+    ["Бесплатный Pro за приглашения",[
+      "Приглашение даёт вам обоим <strong>7 дополнительных дней</strong> Pro, а каждый третий приглашённый — <strong>30 дней</strong>.",
+      "Эти дни — подарок, а не покупка. У них нет денежной стоимости и они не возвращаются.",
+      "Не подделывайте приглашения: аккаунты, которыми управляете вы сами, или спам ссылкой могут стоить и бонусных дней, и аккаунта."
+    ]],
+    ["Написанное вами остаётся вашим",[
+      "Задачи, заметки, привычки, цели, файлы и письма — <strong>ваши</strong>. Мы не претендуем на них.",
+      "Вы даёте нам лишь узкое разрешение, нужное для работы сервиса: хранить ваш контент и показывать его вам на ваших устройствах. Ничего больше. Он не читается для рекламы, не продаётся и не используется для обучения чего-либо.",
+      "В любой момент можно выгрузить всё одним JSON-файлом в Настройки → Ваши данные и удалить всё вместе с логином в Настройки → Опасная зона."
+    ]],
+    ["Правила с вашей стороны",[
+      "Не загружайте незаконное, чужое или предназначенное для причинения вреда другим.",
+      "Не используйте Focus Rooms — включая голос — для травли, записи или оскорбления участников.",
+      "Не пытайтесь сломать или перегрузить приложение, обойти лимиты, прочитать чужие данные или перепродать доступ к Nox.",
+      "Не загружайте персональные данные других людей. Nox — личный планер, а не картотека о посторонних."
+    ]],
+    ["Focus Rooms и голос",[
+      "В комнате другие участники видят ваш username, аватар, статус (фокус или отошёл) и задачу, которую вы решили показать.",
+      "<strong>Голос — peer-to-peer.</strong> Он идёт напрямую между браузерами, никогда не записывается и не проходит через наши серверы. Микрофон запрашивается только по нажатию кнопки микрофона.",
+      "Мы можем закрыть комнату или удалить участника, если она используется во вред другим."
+    ]],
+    ["AI-функции",[
+      "AI-панель, разбор задачи, вечерний планировщик и недельные итоги отправляют соответствующий текст — названия задач и привычек, даты и ваш вопрос — стороннему AI-провайдеру, чтобы получить ответ. Об этом спрашивают один раз, перед первым использованием.",
+      "Всё, что предлагает AI, — это <strong>предложение, которое подтверждаете вы</strong>. Без нажатия кнопки в вашу неделю ничего не записывается.",
+      "Ответ AI может быть неверным. Не полагайтесь на него в медицинских, юридических, финансовых и других серьёзных вопросах."
+    ]],
+    ["Доступность",[
+      "Nox предоставляется как есть, без гарантии бесперебойной работы. Он зависит от сервисов, которыми мы не управляем, и может быть недоступен из-за работ или причин вне нашего контроля.",
+      "<strong>Держите собственные копии</strong> того, что нельзя потерять. Экспорт в настройках существует именно для этого.",
+      "Функции могут добавляться, меняться и удаляться. Если то, за что вы заплатили, удалено в течение оплаченного месяца, вы можете попросить возврат за неиспользованную часть."
+    ]],
+    ["Прекращение",[
+      "Вы можете уйти в любой момент. Удаление аккаунта в настройках убирает данные и сам логин.",
+      "Мы можем приостановить или закрыть аккаунт, который нарушает правила выше или который мы обязаны закрыть по закону. Где это справедливо и возможно — сначала объясним причину и вернём неиспользованное время Pro.",
+      "Само по себе закрытие аккаунта не даёт права на возврат вне политики возврата."
+    ]],
+    ["Ответственность",[
+      "Nox — планер. Это не служба резервного копирования, не медицинский, юридический или финансовый советник и не гарантия того, что дела будут сделаны.",
+      "В пределах, разрешённых законом, наша общая ответственность перед вами ограничена <strong>суммой, фактически уплаченной нам за 12 месяцев до проблемы</strong>. На бесплатном тарифе это ноль — честное следствие того, что он бесплатный.",
+      "Здесь не ограничивается ответственность, которую нельзя ограничить по закону: смерть, вред здоровью, мошенничество."
+    ]],
+    ["Изменения условий",[
+      "Если условия изменятся существенно, дата вверху изменится, и приложение сообщит об этом при следующем открытии.",
+      "Продолжение использования после изменения означает согласие с ним. Если вы не согласны — выгрузите данные и удалите аккаунт."
+    ]],
+    ["Право",[
+      "Эти условия регулируются правом <strong>Республики Узбекистан</strong>, споры относятся к её судам.",
+      "Если вы потребитель, это не отменяет прав, которые даёт вам закон вашей страны."
+    ]]
+  ],
+  contact_h:"Вопросы",
+  contact_p:"По любому пункту этого документа пишите:"
+}
+};
+
+let L = (localStorage.getItem("nox_lang") || "en");
+if(!DOC[L]) L = "en";
+
+function render(){
+  const d = DOC[L];
+  document.documentElement.lang = L;
+  document.title = d.title + " — Nox";
+  document.getElementById("back").textContent = d.back;
+  ["en","uz","ru"].forEach(x => document.getElementById("l-"+x).classList.toggle("on", x === L));
+  const biz = BIZ_READY
+    ? '<div class="callout"><p>' + d.biz_p + '</p><p><strong>' + BIZ.name + '</strong><br>'
+      + BIZ.status + (BIZ.regno ? '<br>' + BIZ.regno : '') + (BIZ.address ? '<br>' + BIZ.address : '')
+      + '</p><p>' + d.biz_run + ' <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a></p></div>'
+    : '<div class="callout todo"><p>' + d.biz_todo + '</p></div>';
+  document.getElementById("doc").innerHTML =
+    '<header><h1>' + d.title + '</h1><div class="upd">' + d.upd + '</div>'
+    + '<p class="lede">' + d.lede + '</p></header>'
+    + '<h2>' + d.biz_h + '</h2>' + biz
+    + d.s.map(sec =>
+        '<h2>' + sec[0] + '</h2><ul>' + sec[1].map(li => '<li>' + li + '</li>').join("") + '</ul>'
+      ).join("")
+    + '<h2>' + d.contact_h + '</h2><p>' + d.contact_p
+    + ' <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a></p>';
+}
+function setL(x){ L = x; try{ localStorage.setItem("nox_lang", x); }catch(e){} render(); }
+function setT(){
+  const light = document.documentElement.classList.toggle("light");
+  document.body.classList.toggle("light", light);
+  try{ localStorage.setItem("nox_theme", light ? "light" : "dark"); }catch(e){}
+  document.getElementById("thm").textContent = light ? "☾" : "☀︎";
+}
+(function(){
+  let saved = null;
+  try{ saved = localStorage.getItem("nox_theme"); }catch(e){}
+  if(saved === "light"){
+    document.documentElement.classList.add("light");
+    document.body.classList.add("light");
+    document.getElementById("thm").textContent = "☾";
+  }
+  render();
+})();
+</script>
+
+
+<script src="assets/legal.js"></script>
+</body>
+</html>

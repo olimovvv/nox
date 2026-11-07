@@ -1,0 +1,263 @@
+/* Shared center-pane artwork. Source drawings are masks so the ink follows each theme. */
+#view-weekly {--ws-tone:#778fa9;--ws-drawing:url("workspace-art.svg#weekly")}
+#view-habits {--ws-tone:#72966e;--ws-drawing:url("workspace-art.svg#habits")}
+#view-focus {--ws-tone:#9282b0;--ws-drawing:url("workspace-art.svg#focus")}
+#view-analytics {--ws-tone:#5b9295;--ws-drawing:url("workspace-art.svg#analytics")}
+#view-finance {--ws-tone:#b1925e;--ws-drawing:url("workspace-art.svg#finance")}
+#view-reminders {--ws-tone:#a97f66;--ws-drawing:url("workspace-art.svg#reminders")}
+#view-rooms {--ws-tone:#7589ad;--ws-drawing:url("workspace-art.svg#rooms")}
+:is(#view-weekly,#view-habits,#view-focus,#view-analytics,#view-finance,#view-reminders,#view-rooms) > .view-hdr {
+  container-type:inline-size; position:relative; isolation:isolate; overflow:hidden;
+  display:flex; flex-flow:column; align-items:flex-start; justify-content:center; gap:13px;
+  box-sizing:border-box; min-height:135px; margin:0 0 18px; padding:18px clamp(15px,2.5vw,34px);
+  border-radius:17px; border:1px solid color-mix(in srgb,var(--ws-tone) 30%,var(--bd));
+  background:color-mix(in srgb,var(--ws-tone) 15%,var(--s1)); color:var(--t1);
+}
+:is(#view-weekly,#view-habits,#view-focus,#view-analytics,#view-finance,#view-reminders,#view-rooms) > .view-hdr::after {
+  content:""; position:absolute; z-index:-1; right:2%; top:0; bottom:0; width:min(320px,45vw); pointer-events:none;
+  background:color-mix(in srgb,var(--ws-tone) 80%,var(--t1));
+  mask:var(--ws-drawing) right center / contain no-repeat;
+}
+:is(#view-weekly,#view-habits,#view-focus,#view-analytics,#view-finance,#view-reminders,#view-rooms) > .view-hdr .view-title{
+  max-width:100%; margin:0; font:600 clamp(27px,3vw,44px)/1.08 'Space Grotesk',system-ui,sans-serif;
+  letter-spacing:-.055em; color:var(--t1); text-wrap:balance;
+}
+:is(#view-weekly,#view-analytics) > .view-hdr > div:first-child{max-width:73%}
+:is(#view-weekly,#view-analytics) > .view-hdr > div:last-child{flex-wrap:wrap;max-width:100%}
+:is(#view-weekly,#view-analytics) :is(#wk-stats,#an-range){line-height:1.5; font-variant-numeric:tabular-nums}
+:is(#view-weekly,#view-analytics) .wnav{background:var(--s1);border-radius:9px}
+#view-focus .focus-time,#view-finance .an-big{font-variant-numeric:tabular-nums}
+#view-weekly .wk-sec-hdr,#view-habits .hab-card-head{padding-bottom:9px;border-bottom:1px solid var(--bd)}
+#view-habits .hab-title,#view-rooms .room-intro-title{letter-spacing:-.025em}
+#view-finance > .an-grid .an-card{border-top:2px solid color-mix(in srgb,var(--ws-tone) 42%,var(--bd))}
+#view-notes .nx-note-empty{display:grid; place-content:center;justify-items:center;gap:12px;min-height:min(380px,55vh);padding:24px;color:var(--t2);font-size:14px;text-align:center}
+#view-notes .nx-note-empty::before{content:"";width:min(170px,42vw);height:88px;background:color-mix(in srgb,#b18b64 70%,var(--t1));mask:url("workspace-art.svg#notes") center / contain no-repeat}
+#view-notes .page-title-input{letter-spacing:-.035em}
+
+#view-daily > .view-hdr[data-phase=dawn]{background:#534852}
+#view-daily > .view-hdr[data-phase=day]{background:#274b59}
+#view-daily > .view-hdr[data-phase=dusk]{background:#50384a}
+#view-daily > .view-hdr[data-phase] .nx-date-line,#view-daily > .view-hdr[data-phase] #owl-counter{color:#e0e9e7}
+#view-daily .nx-row-more{letter-spacing:.06em;transition:background-color .14s ease,color .14s ease}
+#view-daily .nx-task-tray{
+  position:fixed; inset:auto; z-index:150; box-sizing:border-box; flex-flow:column; gap:1px;
+  width:min(258px,calc(100vw - 24px)); max-height:min(460px,calc(100dvh - 16px)); overflow-y:auto;
+  padding:6px; margin:0; border:1px solid var(--bd2); border-radius:16px; color:var(--t1);background:var(--s1);
+  box-shadow:0 12px 38px #0003,0 2px 8px #0002; overscroll-behavior:contain;
+  transform-origin:top right;
+}
+#view-daily .nx-task-tray{opacity:0;transform:translateY(-3px) scale(.985);
+  transition:opacity 140ms ease,transform 165ms cubic-bezier(.23,1,.32,1),display 165ms allow-discrete,overlay 165ms allow-discrete;}
+#view-daily .nx-task-tray:not([hidden]){display:flex;flex-flow:column;gap:1px;margin:0;padding:6px;opacity:1;transform:none;border:1px solid var(--bd2)}
+@starting-style{#view-daily .nx-task-tray:not([hidden]){opacity:0;transform:translateY(-3px) scale(.985)}}
+#view-daily .nx-action-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 4px 3px;padding:1px 0 4px 8px;border-bottom:1px solid var(--bd)}
+#view-daily .nx-action-heading strong{font-size:13px;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;color:var(--t1)}
+#view-daily .nx-task-tray button{flex:none;justify-content:flex-start;gap:11px;box-sizing:border-box;margin:0!important;min-height:40px;padding:8px 12px;border-radius:10px;font-size:14px;font-weight:500;line-height:1.2;text-align:left}
+#view-daily .nx-task-tray button span{font:inherit;letter-spacing:normal}
+#view-daily .nx-task-tray .nx-action-close{justify-content:center;min-width:36px;min-height:36px;padding:0;font:22px/1 system-ui;color:var(--t-cap)}
+#view-daily .nx-task-tray .task-sub-btn:before{content:"+";width:16px;text-align:center;font-size:18px}
+#view-daily .nx-task-tray .task-del-btn{order:5;border-top:1px solid var(--bd);border-radius:0 0 9px 9px;color:var(--red)}
+#view-daily .nx-task-tray button:focus-visible{background:var(--s3);outline:2px solid var(--acc);outline-offset:-2px}
+@container (max-width:440px){
+  :is(#view-weekly,#view-analytics) > .view-hdr .view-title{font-size:clamp(20px,8cqi,31px)}
+}
+@media(max-width:560px){
+  :is(#view-weekly,#view-habits,#view-focus,#view-analytics,#view-finance,#view-reminders,#view-rooms)>.view-hdr{min-height:108px;padding:16px;gap:9px;border-radius:13px}
+  #view-daily .nx-task-tray{left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));width:auto;max-height:75dvh;padding:6px 8px;border-radius:20px;box-shadow:0 -5px 40px #0003}
+  #view-daily .nx-task-tray:not([hidden])::backdrop{background:rgba(0,0,0,.3)}
+  #view-daily .nx-task-tray .nx-action-close,#view-daily .nx-task-tray button{min-height:44px}
+  #view-daily .nx-task-tray{transform:translateY(12px);transform-origin:bottom center}
+  @starting-style{#view-daily .nx-task-tray:not([hidden]){transform:translateY(12px);opacity:0}}
+}
+html[data-nx-light-motion] #view-daily .nx-task-tray{transform:none;transition:opacity 80ms linear}
+@media(prefers-reduced-motion:reduce){#view-daily .nx-task-tray{transform:none;transition:opacity 80ms linear}
+  @starting-style{#view-daily .nx-task-tray:not([hidden]){transform:none}}}
+@starting-style{html[data-nx-light-motion] #view-daily .nx-task-tray:not([hidden]){transform:none}}
+
+#view-weekly .wgrid{align-items:start}
+:is(#view-weekly,#view-habits,#view-analytics,#view-finance)>.view-hdr :is(.btn,.wnav button){min-height:32px;box-shadow:none}
+#view-focus :is(#focus-custom-min,#focus-break-min){width:clamp(141px,16vw,190px)!important;min-height:40px}
+#view-focus .focus-wrap{box-sizing:border-box;max-width:850px;margin-inline:auto}
+@media(min-width:760px){
+ #view-focus .focus-wrap{display:grid;grid-template-columns:minmax(210px,1fr) minmax(240px,1fr);align-items:center;
+   justify-items:start;column-gap:clamp(24px,5vw,76px);row-gap:10px;padding:clamp(22px,3.5vw,48px);background:var(--s1);border:1px solid var(--bd);border-radius:20px}
+ #view-focus .focus-ring{grid-column:1;grid-row:1/5;justify-self:center;margin:0}
+ #view-focus .focus-btns{grid-column:2;grid-row:1;justify-self:start;flex-wrap:wrap;margin:0}
+ #view-focus .focus-wrap>div:has(>#focus-custom-min){grid-column:2;grid-row:2;margin:0!important}
+ #view-focus .focus-wrap>div:has(>#focus-break-min){grid-column:2;grid-row:3;margin:0!important}
+ #view-focus .focus-wrap>div:has(>#focus-toggle){grid-column:2;grid-row:4;margin:0!important}
+ #view-focus .ambient-row{grid-column:1/-1;align-items:flex-start;justify-self:stretch;margin:16px 0 0;padding-top:19px;border-top:1px solid var(--bd)}
+ #view-focus .ambient-btns{justify-content:flex-start}
+ #view-focus .focus-wrap>.set-row,#view-focus .fhist{grid-column:1/-1;justify-self:stretch;max-width:none!important}
+}
+@media(max-width:560px){
+ :is(#view-weekly,#view-habits,#view-analytics,#view-finance)>.view-hdr :is(.btn,.wnav button){min-height:40px}
+ #view-weekly .wgrid{gap:10px}
+}
+#view-daily .nx-task-tray>button:not(.task-del-btn){color:var(--t1)}
+#view-daily .nx-task-tray{pointer-events:none}
+#view-daily .nx-task-tray:not([hidden]){pointer-events:auto}
+/* The original masks remain the fallback until their SVG is ready. */
+.view-hdr.nx-art-mounted::after, .arc-hero.nx-art-mounted::before,
+.nx-note-empty.nx-art-mounted::before { display: none; }
+.view-hdr > .nx-art-svg {
+  position: absolute; z-index: -1; right: 2%; top: 0; height: 100%;
+  width: min(320px,45vw); pointer-events: none;
+  color: color-mix(in srgb,var(--ws-tone) 80%,var(--t1));
+}
+.nx-note-empty > .nx-art-svg {
+  width: min(170px,42vw); height: 88px; pointer-events: none;
+  color: color-mix(in srgb,#b18b64 70%,var(--t1));
+}
+#view-arcs .arc-hero > .nx-art-svg {
+  position:absolute; z-index:-1; top:0; right:0; height:100%; width:auto;
+  aspect-ratio:760/310; max-width:100%; pointer-events:none;
+  mask-image:linear-gradient(90deg,transparent,#000 53%);
+}
+@container arc (max-width:640px) {
+  #view-arcs .arc-hero > .nx-art-svg {opacity:.65}
+}
+
+#view-habits .hab-day-label{color:var(--t2);opacity:1;font-weight:550}
+
+/* Use the width available between the rails, including when either rail is collapsed. */
+#view-weekly{container:week / inline-size;min-width:0}
+#view-weekly #wgrid{grid-template-columns:repeat(7,minmax(0,1fr));align-items:stretch;gap:0;border:1px solid var(--bd2);border-radius:15px;overflow:hidden;background:var(--s1)}
+#view-weekly .wday{min-width:0;min-height:170px;padding:13px 8px;display:flex;flex-direction:column;gap:8px;border:0;border-inline-end:1px solid var(--bd);border-radius:0;backdrop-filter:none;box-shadow:none;background:transparent}
+#view-weekly .wday:last-child{border-inline-end:0}
+#view-weekly .wday.today{background:color-mix(in srgb,var(--acc) 7%,var(--s1));box-shadow:inset 0 2px var(--acc)}
+#view-weekly .wk-day-info{display:grid;justify-items:start;gap:6px;padding:0 2px 7px;border-bottom:1px solid var(--bd)}
+#view-weekly .wday-lbl{font-size:13px;font-weight:600;color:var(--t1);text-align:start;margin:0}
+#view-weekly .wday-ring{margin:0}
+#view-weekly .wk-day-tasks{min-width:0;display:grid;gap:5px;align-content:start}
+#view-weekly .wtask{display:block;width:100%;box-sizing:border-box;margin:0;padding:7px;border:0;text-align:start;font:inherit;font-size:13px;line-height:1.4;white-space:normal;overflow-wrap:anywhere;color:var(--t1);border-radius:7px;background:var(--s2);cursor:pointer}
+#view-weekly .wtask.done{color:var(--t2)}
+#view-weekly .wtask-empty{margin:0;padding:4px 0;text-align:start;font-size:12px;color:var(--t2)}
+#view-weekly .wadd{margin:auto 0 0;min-height:32px;width:100%;color:var(--t2);background:transparent}
+#view-weekly .wtask:focus-visible,#view-weekly .wadd:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+@container week (max-width:999px){
+ #view-weekly #wgrid{display:flex;flex-direction:column;gap:0}
+ #view-weekly .wday{display:grid;grid-template-columns:clamp(70px,16cqw,108px) minmax(0,1fr) 40px;align-items:start;gap:10px;min-height:64px;padding:10px 12px;border:0;border-bottom:1px solid var(--bd)}
+ #view-weekly .wday:last-child{border:0}
+ #view-weekly .wday.today{box-shadow:inset 2px 0 var(--acc)}
+ #view-weekly .wk-day-info{border:0;padding:0;align-self:center}
+ #view-weekly .wday-ring{display:none}
+ #view-weekly .wk-day-tasks{align-self:center}
+ #view-weekly .wadd{align-self:center;margin:0;min-height:40px}
+ #view-weekly .wtask{padding:8px;min-height:38px}
+}
+#view-analytics .an-grid.rv-packed{grid-auto-rows:4px}
+@media(max-width:850px){#view-analytics .an-grid.rv-packed{grid-auto-rows:auto;row-gap:14px}#view-analytics .rv-packed>.an-card{grid-row:auto!important}}
+@container week (max-width:999px){#view-weekly .wday-ring{display:block;width:auto;height:auto;color:var(--t2);font-variant-numeric:tabular-nums}#view-weekly .wday-ring svg{display:none}#view-weekly .wday-ring .rp{position:static;display:inline;font-size:11px;color:inherit}#view-weekly .wday-ring .rp::after{content:"%"}}
+
+/* Shared Nox tokens and the challenge landscape. */
+:root{--nx-type-display:'Space Grotesk',system-ui,sans-serif;--nx-route-bg:#203844;--nx-route-fg:#fff8e9;--nx-route-label:#f0d49e;--nx-route-muted:#dae6e3;--nx-route-line:#445e68;--nx-route-action:#f2d7a3;--nx-route-track:#71808a;--nx-season-winter:#83a5b6;--nx-season-focus:#a291bd;--nx-season-start:#91a780}
+#view-arcs{container:arc / inline-size;max-width:1080px;padding:6px 0 48px;min-width:0}
+#view-arcs .arc-top{margin-bottom:14px}
+#view-arcs .arc-brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:24px}
+.arc-nav-emoji{width:1.1em;height:1.1em;object-fit:contain;flex-shrink:0}
+#view-arcs .arc-hero{position:relative;isolation:isolate;overflow:hidden;display:block;min-height:245px;padding:32px;border:1px solid var(--nx-route-line);border-radius:18px;background:var(--nx-route-bg);color:var(--nx-route-fg)}
+#view-arcs .arc-hero::before{content:"";position:absolute;pointer-events:none;z-index:-1;inset:0 0 0 18%;background:url("arc-ascent.svg") right center / auto 100% no-repeat;mask-image:linear-gradient(90deg,transparent,#000 53%)}
+#view-arcs .arc-hero>div{max-width:54%;min-width:0}
+#view-arcs .arc-hero h1{color:var(--nx-route-fg);font:600 44px/1.06 var(--nx-type-display);letter-spacing:-.045em;margin:9px 0 12px;text-wrap:balance}
+#view-arcs .arc-hero p{color:var(--nx-route-muted);line-height:1.55;max-width:41ch;margin:0 0 16px}
+#view-arcs .arc-hero .arc-eyebrow,#view-arcs .arc-hero .arc-caption{color:var(--nx-route-label);letter-spacing:0;font-weight:500;text-transform:none;font-size:13px}
+#view-arcs .arc-hero .primary{background:var(--nx-route-action);color:var(--nx-route-bg)}
+#view-arcs .arc-progress{display:grid;gap:6px;max-width:280px;margin-top:13px}
+#view-arcs .arc-progress progress{appearance:none;width:100%;height:5px;border:0;border-radius:5px;background:var(--nx-route-track);accent-color:var(--nx-route-label)}
+#view-arcs progress::-webkit-progress-bar{border-radius:5px;background:var(--nx-route-track)}
+#view-arcs progress::-webkit-progress-value{border-radius:5px;background:var(--nx-route-label)}
+#view-arcs progress::-moz-progress-bar{border-radius:5px;background:var(--nx-route-label)}
+#view-arcs .arc-progress span{font-size:12px;color:var(--nx-route-muted);font-variant-numeric:tabular-nums}
+#view-arcs .arc-presets{gap:12px}
+#view-arcs .arc-presets button{position:relative;overflow:hidden;border-radius:14px;padding:20px;min-width:0}
+#view-arcs .arc-presets button::before{content:"";display:block;width:62px;height:36px;margin-bottom:19px;background:var(--arc-ink,var(--acc));mask:var(--arc-mark) center / contain no-repeat}
+#view-arcs .arc-presets button:nth-child(1){--arc-ink:var(--nx-season-winter);--arc-mark:url("workspace-art.svg#analytics")}
+#view-arcs .arc-presets button:nth-child(2){--arc-ink:var(--nx-season-focus);--arc-mark:url("workspace-art.svg#focus")}
+#view-arcs .arc-presets button:nth-child(3){--arc-ink:var(--nx-season-start);--arc-mark:url("workspace-art.svg#habits")}
+#view-arcs .arc-presets button>span{position:absolute;right:16px;top:20px;color:var(--t2);letter-spacing:0;text-transform:none;font-size:12px}
+#view-arcs .arc-presets strong{margin:0 0 9px;letter-spacing:-.025em;font-weight:600}
+#view-arcs .arc-presets p{margin:0;color:var(--t2);line-height:1.55}
+#view-arcs .arc-panel,#view-arcs .arc-metrics{border-radius:15px}
+#view-arcs .arc-metrics{margin-block:14px}
+#view-arcs .arc-columns{align-items:start;gap:14px}
+#view-arcs .arc-check{border-radius:7px}
+#view-arcs .arc-grid{scrollbar-width:thin}
+#view-arcs .arc-top .arc-button{background:transparent}
+#view-arcs .arc-tabs button[aria-pressed=true]{background:color-mix(in srgb,var(--acc) 9%,var(--s1))}
+#view-arcs .arc-caption,#view-arcs .arc-metrics div{font-size:13px;line-height:1.5}
+@container arc (max-width:640px){
+ #view-arcs .arc-hero{min-height:225px;padding:20px}
+ #view-arcs .arc-hero::before{inset:0;background-position:70% center;mask-image:linear-gradient(90deg,transparent,#0004 42%,#000 96%)}
+ #view-arcs .arc-hero>div{max-width:80%}
+ #view-arcs .arc-hero h1{font-size:32px}
+ #view-arcs .arc-presets,#view-arcs .arc-columns{grid-template-columns:1fr}
+ #view-arcs .arc-presets button{padding:14px 16px 14px 76px}
+ #view-arcs .arc-presets button::before{position:absolute;left:14px;top:17px;width:48px;height:30px}
+ #view-arcs .arc-presets button>span{position:static;margin-bottom:3px}
+ #view-arcs .arc-columns .arc-panel:last-child{grid-row:1}
+ #view-arcs .arc-grid{max-height:285px}
+ #view-arcs .arc-metrics div{min-width:0;padding:12px 9px}
+}
+@media(hover:hover){#view-arcs .arc-presets button:hover{background:color-mix(in srgb,var(--arc-ink) 9%,var(--s1));border-color:var(--arc-ink)}}
+@container week (max-width:999px){#view-weekly .wk-day-info .wday-ring .rp{transform:none}}
+#view-notes .page-body{max-width:840px;margin-inline:auto;padding:28px clamp(16px,3vw,40px)}
+#view-notes .page-title-input{font:600 32px/1.2 var(--nx-type-display)}
+#view-notes .block-text{font-size:15px;line-height:1.65}
+#view-finance .an-big{letter-spacing:-.035em;font-size:32px;line-height:1.2;font-weight:600}
+#view-finance > .an-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#view-finance > .an-grid>.an-card:last-child{grid-column:1/-1}
+#view-finance #fin-list .fin-row{font-variant-numeric:tabular-nums}
+#view-rooms #room-empty{max-width:850px;margin:0 auto}
+#view-rooms .room-intro-card{padding:22px 0}
+#view-rooms .room-intro-icon{display:none}
+#view-rooms .room-intro-title{font-size:25px;line-height:1.2}
+#view-rooms .room-intro-sub{font-size:14px;line-height:1.6;max-width:50ch;margin:10px auto 0}
+#view-rooms .room-split .glass-card{border-radius:15px;background:var(--s1);backdrop-filter:none;box-shadow:none;padding:22px}
+#view-rooms .room-split .set-name{font-size:16px;font-weight:600}
+#view-rooms #room-code-inp{font-variant-numeric:tabular-nums}
+#view-dashboard :is(.finput,.arc-dialog input,.arc-dialog textarea):focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+#view-login .auth-box{padding:30px;border-radius:20px;border:1px solid var(--bd2);background:var(--s1)}
+#view-login .auth-title{font:600 28px/1.15 var(--nx-type-display);letter-spacing:-.025em;margin-bottom:10px}
+#view-login .auth-sub{font-size:14px;line-height:1.5}
+#view-login .auth-switch-link{min-height:44px;font-size:13px}
+@media(max-width:560px){
+ #view-finance > .an-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #view-finance > .an-grid>.an-card:nth-child(3){grid-column:1/-1}
+ #view-finance .an-big{font-size:28px}
+ #view-dashboard :is(input,textarea,select):not([type=checkbox]):not([type=radio]):not([type=range]),#view-login :is(input,textarea,select){font-size:16px}
+ #view-rooms .room-split .glass-card{padding:18px}
+ #view-login .auth-box{padding:24px 20px}
+ #view-notes .page-title-input{font-size:28px}
+}
+
+#view-analytics .an-grid.rv-packed{display:block;columns:2;column-gap:16px}
+#view-analytics .rv-packed>.an-card{display:inline-block;vertical-align:top;break-inside:avoid;width:100%;margin:0 0 16px}
+#view-analytics .rv-packed>.an-card[hidden]{display:none}
+@media(max-width:850px){#view-analytics .an-grid.rv-packed{columns:1}}
+#view-arcs .arc-top .arc-button{color:var(--t1);border-color:var(--bd2)}
+@container arc (max-width:640px){#view-arcs .arc-hero::before{opacity:.65}}
+
+/* The Arc mark echoes the route landscape without a platform emoji. */
+.arc-nav-mark{display:inline-block;width:1.25em;height:1.25em;flex:none;vertical-align:middle;object-fit:contain}
+body.view-focused #view-daily{width:100%;max-width:none}
+body.view-focused #view-daily>.view-hdr{width:100%}
+
+/* Banner grows with the pane; artwork keeps its scale when rails collapse. */
+#view-daily>.view-hdr>:is(.nx-day-art,.nx-daily-motion){width:min(520px,70vw);height:100%;object-fit:contain;object-position:right center}
+
+/* Resize once: width/padding tweening repeatedly reflowed grids and charts. */
+.sidebar-l,.sidebar-r{transition:opacity .16s ease;will-change:auto}
+.main-content{transition:none;min-width:0}
+#study-activity .study-map{contain:layout paint}
+
+/* Keep the landscape fade attached to the image, not an empty wide container. */
+#view-arcs .arc-hero::before{inset:0 0 0 auto;width:auto;height:100%;aspect-ratio:760/310;max-width:100%;background-size:100% 100%;mask-image:linear-gradient(90deg,transparent,#000 53%)}
+
+/* Restore the approved expanding rail movement on explicit resize, not tab entry. */
+body.nx-resizing .sidebar-l,body.nx-resizing .sidebar-r{transition:width .42s var(--ease-settle),transform .42s var(--ease-settle),opacity .2s ease,padding .42s var(--ease-settle),border-width .42s var(--ease-settle)}
+body.nx-resizing .main-content{transition:padding .42s var(--ease-settle)}
+html[data-nx-light-motion] .modal-overlay,html[data-nx-light-motion] .modal-overlay>*{animation-duration:100ms!important}
+html[data-nx-light-motion] .ai-panel{transition-duration:100ms!important}
+
+#view-daily>.view-hdr:has(>.nx-daily-motion)>.nx-day-art{visibility:hidden}

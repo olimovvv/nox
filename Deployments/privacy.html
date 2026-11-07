@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Privacy — Nox</title>
+<meta name="description" content="What Nox stores, what it deliberately does not store, and how to get your data out or delete it."/>
+<meta name="author" content="Behruzbek Olimov"/>
+<meta name="copyright" content="Copyright © 2026 Behruzbek Olimov. All rights reserved."/>
+<link rel="canonical" href="https://noxlabapp.vercel.app/privacy"/>
+<link rel="icon" href="icon-192.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0c0c;--s1:#141414;--s2:#1a1a1a;--bd:#232323;--bd2:#2c2c2c;
+  --t1:#f0f0f0;--t2:#a8a8a8;--t-cap:#7d7d7d;--acc:#52D1A4;
+}
+html.light{
+  --bg:#efe6d3;--s1:#f7f0e2;--s2:#f2e9d8;--bd:#ded2b8;--bd2:#d3c5a6;
+  --t1:#231e13;--t2:#4a4234;--t-cap:#6e644e;--acc:#147150;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--bg);color:var(--t1);
+  font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.72;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  padding:0 22px 90px;
+}
+.wrap{max-width:720px;margin:0 auto;}
+nav{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:22px 0;border-bottom:.5px solid var(--bd);flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--t1);}
+.brand span{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:500;letter-spacing:-.01em;}
+.ctrl{display:flex;gap:6px;align-items:center;}
+.ctrl button{
+  background:var(--s1);border:.5px solid var(--bd2);color:var(--t2);
+  font-family:'Inter',sans-serif;font-size:11.5px;padding:6px 10px;border-radius:8px;cursor:pointer;
+  transition:color .18s ease,border-color .18s ease,background-color .18s ease;
+}
+.ctrl button:hover{color:var(--t1);}
+.ctrl button.on{color:var(--acc);border-color:var(--acc);}
+header{padding:52px 0 30px;}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,6vw,46px);font-weight:700;line-height:1.05;letter-spacing:-.025em;text-wrap:balance;}
+.upd{font-size:12px;color:var(--t-cap);margin-top:12px;font-variant-numeric:tabular-nums;}
+.lede{font-size:16.5px;color:var(--t2);margin-top:18px;max-width:58ch;text-wrap:pretty;}
+h2{
+  font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:500;
+  letter-spacing:-.012em;margin:42px 0 12px;text-wrap:balance;
+}
+p{margin-bottom:14px;color:var(--t2);text-wrap:pretty;}
+p strong,li strong{color:var(--t1);font-weight:500;}
+ul{margin:0 0 16px 0;padding-left:0;list-style:none;}
+li{
+  position:relative;padding-left:18px;margin-bottom:9px;color:var(--t2);text-wrap:pretty;
+}
+li::before{content:"";position:absolute;left:2px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--bd2);}
+.callout{
+  background:var(--s1);border:.5px solid var(--bd2);border-left:2px solid var(--acc);
+  border-radius:0 10px 10px 0;padding:16px 18px;margin:18px 0;
+}
+.callout p:last-child{margin-bottom:0;}
+.todo{border-left-color:#e0a33a;}
+footer{margin-top:56px;padding-top:22px;border-top:.5px solid var(--bd);font-size:12.5px;color:var(--t-cap);}
+footer a{color:var(--t2);text-decoration:none;border-bottom:.5px solid var(--bd2);}
+footer a:hover{color:var(--acc);border-bottom-color:var(--acc);}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+<link rel="stylesheet" href="assets/legal.css">
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="/">
+      <svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11.19 2A9 9 0 1 0 19.8 12.9 7 7 0 1 1 11.19 2Z" fill="var(--t1)"/></svg>
+      <span>nox</span>
+    </a>
+    <div class="ctrl">
+      <button id="l-en" onclick="setL('en')">EN</button>
+      <button id="l-uz" onclick="setL('uz')">UZ</button>
+      <button id="l-ru" onclick="setL('ru')">RU</button>
+      <button id="thm" onclick="setT()" aria-label="Theme">☀︎</button>
+    </div>
+  </nav>
+  <main id="doc"></main>
+  <footer>
+    <a href="/">&larr; <span id="back">back to Nox</span></a>
+    &nbsp;·&nbsp; <a href="terms.html">Terms</a>
+    &nbsp;·&nbsp; <a href="refund.html">Refunds</a>
+    &nbsp;·&nbsp; <a href="ownership.html">Ownership</a>
+  </footer>
+</div>
+
+<script>
+// ⚠️ SET THIS BEFORE DEPLOYING — a privacy policy needs a real address people can write to.
+const CONTACT_EMAIL = "noxlab.help@gmail.com";
+
+const DOC = {
+en:{
+  back:"back to Nox",
+  title:"Privacy",
+  upd:"Last updated: 14 September 2026",
+  lede:"Nox is a personal planner, so almost everything it holds is something you typed. This page says exactly what is stored, what is deliberately not stored, and how to take it all back.",
+  s:[
+    ["What you give us",[
+      "<strong>Your account</strong> — email address, username, and optionally a display name, an avatar choice and your chronotype (early bird or night owl).",
+      "<strong>What you plan</strong> — tasks, subtasks, deadlines, sections, notes, habits and their daily log, goals, focus sessions, pages, rewards, and any finance entries you add.",
+      "<strong>Files you attach</strong> — photos on task notes, images in pages, and payment screenshots. These live in the app's own storage bucket.",
+      "<strong>Letters to your future self</strong> — kept sealed until the date you chose, then shown to you and marked delivered."
+    ]],
+    ["What the app records on its own",[
+      "<strong>Usage sessions</strong> — when the app was opened, roughly what kind of device (mobile, tablet or desktop), which browser family, your timezone, and the <em>host</em> of the page that linked you here.",
+      "<strong>Events</strong> — which tab you opened, so quiet parts of the app can be found and improved.",
+      "<strong>Feedback</strong> — the moon rating and any comment you choose to write.",
+      "<strong>Push subscriptions</strong> — if you turn on reminders, the browser endpoint needed to deliver them, plus your language.",
+      "<strong>Sign-in sessions</strong> — the sign-in service keeps one record per device you are signed in on: when it signed in, when it was last active, the browser's user-agent string and the IP address it signed in from. Settings → Devices shows you the first three so you can recognise and sign out a device; Nox never reads the IP. A session's record goes when you sign that device out."
+    ]],
+    ["What is deliberately not stored",[
+      "<strong>No IP address in Nox's own tables.</strong> There is no column for one anywhere in the usage data. The only place an IP exists is the sign-in service's session record described above, and it is not shown to anyone.",
+      "<strong>No user-agent string in the usage data.</strong> Only a coarse category — \"mobile\" and \"safari\", not your exact build. Your own sign-in sessions do keep it, which is what lets the Devices list tell your iPhone from your Mac.",
+      "<strong>Screen size is rounded to 100-pixel buckets</strong>, so it describes a form factor rather than identifying a machine.",
+      "<strong>Nothing personal in URLs.</strong>",
+      "<strong>No advertising, no trackers, no third-party analytics.</strong> The usage data above is Nox's own and stays in Nox's own database.",
+      "<strong>No profile of you is sold, shared or built for anyone else.</strong>"
+    ]],
+    ["Where it lives, and who can read it",[
+      "Everything is stored in Nox's own Postgres database with row-level security switched on, which means every row is bound to one account at the database level — not merely hidden by the interface.",
+      "Only two things are visible to anyone other than you: your <strong>username and avatar inside a Focus Room</strong> you joined, and, if you send a payment screenshot, that screenshot to whoever reviews it."
+    ]],
+    ["Focus Rooms and voice",[
+      "In a room, other members see your display name, avatar, whether you are focusing or away, and the task you chose to show.",
+      "<strong>Voice is peer-to-peer.</strong> Audio travels between browsers directly and is never recorded, stored or passed through Nox's servers. The microphone is only ever requested when you press the microphone button."
+    ]],
+    ["The AI panel",[
+      "When you use the AI panel, the message you write is sent — together with a short summary of your current tasks, habits and focus time — to the AI provider that answers it, so the reply can be about your actual week.",
+      "That means <strong>the text of your tasks and habits leaves Nox when you use the AI panel</strong>. If you would rather that never happen, simply do not open it; nothing else in the app sends your content anywhere."
+    ]],
+    ["Connected services",[
+      "<strong>Google Calendar or Notion</strong> — only if you connect them. Nox stores the access token needed to talk to them and nothing else, and you can disconnect at any time from Settings.",
+      "<strong>Fonts and libraries</strong> are loaded from Google Fonts and cdnjs, which means those services see the request your browser makes for them.",
+      "Hosting is Vercel; the database, storage and authentication are Supabase."
+    ]],
+    ["What stays on your device only",[
+      "Theme, language, accent colour, chronotype, which sections you collapsed, recently used emoji, and a few dismissal flags. These sit in your browser's local storage, never reach the server, and disappear if you clear site data."
+    ]],
+    ["Getting your data out, and deleting it",[
+      "<strong>Export</strong> — Settings → Your data gives you a single JSON file with everything the app holds for you.",
+      "<strong>Delete</strong> — Settings → Danger zone removes your account itself: tasks, habits, pages, goals, finance entries, sections, rewards, letters, payment records, push subscriptions, Focus Room membership, any Google Calendar or Notion connection, and the login.",
+      "The one thing that survives is usage counts — which parts of the app were opened, and how often. Those rows lose their link to you at the same moment, so what remains cannot be traced back to a person.",
+      "If anything goes wrong while deleting, the app tells you so rather than pretending. Write to us and we will finish it by hand."
+    ]],
+    ["Cookies",[
+      "<strong>Nox sets no cookies.</strong> Not for analytics, not for advertising, not for anything — the word never appears in the code that runs on your device.",
+      "What it does use is your browser's own <strong>local storage</strong>, on your device only: the sign-in token that keeps you logged in, and small preferences like theme, language and accent colour. Clearing site data in your browser removes all of it.",
+      "Because nothing is stored in cookies and nothing is shared with a third party, there is no separate cookie policy to read. This section is it."
+    ]],
+    ["Children",[
+      "Nox is not aimed at children under 13 and does not knowingly collect anything from them."
+    ]],
+    ["Changes",[
+      "If this policy changes in a way that affects what is collected, the date at the top changes and the change is announced inside the app rather than quietly published."
+    ]]
+  ],
+  contact_h:"Questions",
+  contact_p:"Write to us about anything on this page — including a request to delete your login:",
+  contact_todo:"⚠️ Contact address not set yet. Add it in privacy.html (CONTACT_EMAIL) before this page goes live."
+},
+uz:{
+  back:"Nox'ga qaytish",
+  title:"Maxfiylik",
+  upd:"Oxirgi yangilanish: 2026-yil 14-sentabr",
+  lede:"Nox — shaxsiy rejalashtiruvchi, ya'ni undagi deyarli hamma narsani siz o'zingiz yozgansiz. Bu sahifa nima saqlanishini, nima ataylab saqlanmasligini va hammasini qanday qaytarib olishni aytadi.",
+  s:[
+    ["Siz beradigan ma'lumot",[
+      "<strong>Akkauntingiz</strong> — email, username, hamda ixtiyoriy ravishda ism, avatar tanlovi va xronotipingiz (erta turuvchi yoki tungi).",
+      "<strong>Rejalaringiz</strong> — vazifalar, ichki qadamlar, muddatlar, bo'limlar, eslatmalar, odatlar va ularning kunlik jurnali, maqsadlar, fokus sessiyalari, sahifalar, mukofotlar va kiritsangiz moliya yozuvlari.",
+      "<strong>Biriktirgan fayllaringiz</strong> — vazifa eslatmasidagi rasmlar, sahifalardagi tasvirlar va to'lov skrinshotlari. Ular ilovaning o'z omborida turadi.",
+      "<strong>Kelajakdagi o'zingizga xatlar</strong> — siz tanlagan sanagacha muhrlangan holda saqlanadi, keyin sizga ko'rsatiladi."
+    ]],
+    ["Ilova o'zi yozib oladigan ma'lumot",[
+      "<strong>Sessiyalar</strong> — ilova qachon ochilgani, qurilma turi (telefon, planshet yoki kompyuter), brauzer oilasi, vaqt mintaqangiz va sizni bu yerga olib kelgan sahifaning <em>hosti</em>.",
+      "<strong>Hodisalar</strong> — qaysi tabni ochganingiz; bu ilovaning kam ishlatiladigan joylarini topib yaxshilash uchun.",
+      "<strong>Fikr-mulohaza</strong> — oy bahosi va yozsangiz izoh.",
+      "<strong>Push obunalari</strong> — eslatmalarni yoqsangiz, ularni yetkazish uchun kerak bo'lgan brauzer manzili va tilingiz.",
+      "<strong>Kirish sessiyalari</strong> — kirish xizmati siz kirgan har bir qurilma uchun bitta yozuv saqlaydi: qachon kirilgani, oxirgi faollik vaqti, brauzerning user-agent satri va kirilgan IP manzil. Sozlamalar → Qurilmalar sizga dastlabki uchtasini ko'rsatadi — qurilmani tanib, undan chiqish uchun; Nox IP manzilni hech qachon o'qimaydi. Qurilmadan chiqsangiz, uning yozuvi ham yo'qoladi."
+    ]],
+    ["Ataylab saqlanmaydigan narsalar",[
+      "<strong>Nox'ning o'z jadvallarida IP manzil yo'q.</strong> Foydalanish ma'lumotlarida uning uchun ustun umuman mavjud emas. IP faqat yuqorida aytilgan kirish xizmatining sessiya yozuvida bor va u hech kimga ko'rsatilmaydi.",
+      "<strong>Foydalanish ma'lumotlarida user-agent satri yo'q.</strong> Faqat qo'pol turkum — \"mobil\" va \"safari\", aniq versiyangiz emas. O'z kirish sessiyalaringizda esa u saqlanadi — Qurilmalar ro'yxati iPhone'ni Mac'dan aynan shu orqali ajratadi.",
+      "<strong>Ekran o'lchami 100 piksellik bo'laklarga yaxlitlanadi</strong>, ya'ni u qurilma shaklini bildiradi, mashinani emas.",
+      "<strong>URL manzillarda shaxsiy hech narsa yo'q.</strong>",
+      "<strong>Reklama, treker, uchinchi tomon analitikasi — yo'q.</strong> Yuqoridagi ma'lumot Nox'niki va Nox'ning o'z bazasida qoladi.",
+      "<strong>Sizning profilingiz sotilmaydi, ulashilmaydi va kimdir uchun tuzilmaydi.</strong>"
+    ]],
+    ["Qayerda turadi va kim ko'ra oladi",[
+      "Hammasi Nox'ning o'z Postgres bazasida, row-level security yoqilgan holda saqlanadi — ya'ni har bir qator baza darajasida bitta akkauntga bog'langan, shunchaki interfeysda yashirilgan emas.",
+      "Sizdan boshqa kimgadir ko'rinadigan atigi ikki narsa bor: <strong>siz qo'shilgan Focus Room ichidagi username va avataringiz</strong>, va to'lov skrinshoti yuborsangiz — uni ko'rib chiqadigan odam uchun o'sha skrinshot."
+    ]],
+    ["Focus Rooms va ovoz",[
+      "Xonada boshqa a'zolar sizning ismingiz, avataringiz, fokusdami yoki yo'qligingiz va o'zingiz ko'rsatishni tanlagan vazifani ko'radi.",
+      "<strong>Ovoz to'g'ridan-to'g'ri qurilmalar orasida yuradi.</strong> U yozib olinmaydi, saqlanmaydi va Nox serverlaridan o'tmaydi. Mikrofon faqat siz mikrofon tugmasini bosganingizda so'raladi."
+    ]],
+    ["AI paneli",[
+      "AI panelidan foydalanganingizda yozgan xabaringiz — joriy vazifalaringiz, odatlaringiz va fokus vaqtingizning qisqa xulosasi bilan birga — javob beruvchi AI provayderiga yuboriladi, toki javob haqiqiy haftangiz haqida bo'lsin.",
+      "Ya'ni <strong>AI panelidan foydalansangiz vazifa va odatlaringiz matni Nox'dan tashqariga chiqadi</strong>. Buni istamasangiz — panelni ochmang; ilovadagi boshqa hech narsa mazmuningizni hech qayerga yubormaydi."
+    ]],
+    ["Ulangan xizmatlar",[
+      "<strong>Google Calendar yoki Notion</strong> — faqat o'zingiz ulasangiz. Nox ular bilan gaplashish uchun kerak bo'lgan tokendan boshqa hech narsa saqlamaydi, va istalgan payt Sozlamalardan uzib qo'yasiz.",
+      "<strong>Shrift va kutubxonalar</strong> Google Fonts va cdnjs'dan yuklanadi — demak bu xizmatlar brauzeringizning so'rovini ko'radi.",
+      "Hosting — Vercel; baza, ombor va autentifikatsiya — Supabase."
+    ]],
+    ["Faqat qurilmangizda qoladigan narsalar",[
+      "Tema, til, asosiy rang, xronotip, qaysi bo'limlarni yopganingiz, oxirgi ishlatilgan emojilar va bir nechta \"ko'rsatilgan\" belgilari. Ular brauzeringizning local storage'ida turadi, serverga chiqmaydi va sayt ma'lumotlarini tozalasangiz yo'qoladi."
+    ]],
+    ["Ma'lumotni olib chiqish va o'chirish",[
+      "<strong>Eksport</strong> — Sozlamalar → Ma'lumotlaringiz bo'limi bitta JSON faylda hamma narsani beradi.",
+      "<strong>O'chirish</strong> — Sozlamalar → Xavfli zona akkauntingizning o'zini o'chiradi: vazifalar, odatlar, sahifalar, maqsadlar, moliya yozuvlari, bo'limlar, mukofotlar, xatlar, to'lov yozuvlari, push obunalari, Focus Room a'zoligi, Google Calendar yoki Notion ulanishi va login.",
+      "Faqat bitta narsa qoladi — ilovaning qaysi qismi necha marta ochilgani. O'sha qatorlar aynan o'sha payt siz bilan bog'liqligini yo'qotadi, ya'ni qolgani hech kimga qaytarib bog'lanmaydi.",
+      "O'chirish paytida biror narsa noto'g'ri ketsa, ilova buni yashirmay aytadi. Bizga yozing — qo'lda oxiriga yetkazamiz."
+    ]],
+    ["Cookie'lar",[
+      "<strong>Nox hech qanday cookie qo'ymaydi.</strong> Na statistika, na reklama, na boshqa narsa uchun — bu so'z qurilmangizda ishlaydigan kodda umuman uchramaydi.",
+      "Uning o'rniga brauzeringizning <strong>local storage</strong>'i ishlatiladi, faqat sizning qurilmangizda: tizimda qolishingiz uchun kirish tokeni va tema, til, asosiy rang kabi kichik sozlamalar. Brauzerda sayt ma'lumotlarini tozalasangiz, hammasi o'chadi.",
+      "Cookie'da hech narsa saqlanmagani va uchinchi tomonga hech narsa berilmagani uchun alohida cookie siyosati ham kerak emas. Shu bo'limning o'zi yetarli."
+    ]],
+    ["Bolalar",[
+      "Nox 13 yoshdan kichik bolalar uchun mo'ljallanmagan va ulardan bila turib hech qanday ma'lumot yig'maydi."
+    ]],
+    ["O'zgarishlar",[
+      "Agar bu siyosat yig'iladigan ma'lumotga ta'sir qiladigan darajada o'zgarsa, yuqoridagi sana yangilanadi va o'zgarish jimgina e'lon qilinmay, ilova ichida aytiladi."
+    ]]
+  ],
+  contact_h:"Savollar",
+  contact_p:"Bu sahifadagi istalgan narsa bo'yicha yozing — login o'chirish so'rovi ham shu yerga:",
+  contact_todo:"⚠️ Aloqa manzili hali qo'yilmagan. Sahifa jonli bo'lishidan oldin privacy.html ichidagi CONTACT_EMAIL ni to'ldiring."
+},
+ru:{
+  back:"назад в Nox",
+  title:"Конфиденциальность",
+  upd:"Обновлено: 14 сентября 2026",
+  lede:"Nox — личный планировщик, поэтому почти всё, что в нём есть, вы написали сами. Эта страница говорит, что именно хранится, что намеренно не хранится и как всё забрать обратно.",
+  s:[
+    ["Что даёте вы",[
+      "<strong>Аккаунт</strong> — email, имя пользователя, а также по желанию отображаемое имя, аватар и хронотип (жаворонок или сова).",
+      "<strong>Ваши планы</strong> — задачи, подзадачи, сроки, разделы, заметки, привычки и их журнал, цели, сессии фокуса, страницы, награды и финансовые записи, если вы их добавляете.",
+      "<strong>Прикреплённые файлы</strong> — фото в заметках к задачам, изображения на страницах и скриншоты оплаты. Они лежат в собственном хранилище приложения.",
+      "<strong>Письма себе в будущее</strong> — хранятся запечатанными до выбранной вами даты."
+    ]],
+    ["Что приложение записывает само",[
+      "<strong>Сессии</strong> — когда приложение открывали, примерный тип устройства (телефон, планшет или компьютер), семейство браузера, ваш часовой пояс и <em>хост</em> страницы, с которой вы пришли.",
+      "<strong>События</strong> — какую вкладку вы открыли, чтобы находить и улучшать редко используемые части.",
+      "<strong>Отзывы</strong> — лунная оценка и комментарий, если вы его напишете.",
+      "<strong>Push-подписки</strong> — если вы включите напоминания: адрес браузера, нужный для доставки, и язык.",
+      "<strong>Сессии входа</strong> — сервис входа хранит одну запись на каждое устройство, где выполнен вход: когда вошли, когда устройство было активно в последний раз, строку user-agent браузера и IP-адрес, с которого выполнен вход. Настройки → Устройства показывают первые три, чтобы узнать устройство и выйти с него; Nox никогда не читает IP. Запись сессии исчезает, когда вы выходите с этого устройства."
+    ]],
+    ["Что намеренно не хранится",[
+      "<strong>Никаких IP-адресов в собственных таблицах Nox.</strong> В данных об использовании для них попросту нет столбца. IP существует только в записи сессии входа, описанной выше, и никому не показывается.",
+      "<strong>Никакой строки user-agent в данных об использовании.</strong> Только грубая категория — «мобильный» и «safari», а не точная сборка. В ваших собственных сессиях входа она есть — именно по ней список Устройств отличает iPhone от Mac.",
+      "<strong>Размер экрана округляется до 100 пикселей</strong> — он описывает форм-фактор, а не опознаёт устройство.",
+      "<strong>Ничего личного в URL.</strong>",
+      "<strong>Ни рекламы, ни трекеров, ни сторонней аналитики.</strong> Данные выше принадлежат Nox и остаются в его собственной базе.",
+      "<strong>Ваш профиль не продаётся, не передаётся и ни для кого не составляется.</strong>"
+    ]],
+    ["Где это лежит и кто может прочитать",[
+      "Всё хранится в собственной базе Postgres с включённым row-level security: каждая строка привязана к одному аккаунту на уровне базы, а не просто спрятана в интерфейсе.",
+      "Кому-то кроме вас видно ровно две вещи: <strong>ваше имя и аватар внутри Focus Room</strong>, куда вы вошли, и — если вы отправили скриншот оплаты — этот скриншот тому, кто его проверяет."
+    ]],
+    ["Focus Rooms и голос",[
+      "В комнате участники видят ваше имя, аватар, фокусируетесь вы или отошли, и задачу, которую вы решили показать.",
+      "<strong>Голос идёт напрямую между браузерами.</strong> Он не записывается, не хранится и не проходит через серверы Nox. Микрофон запрашивается только когда вы нажимаете кнопку микрофона."
+    ]],
+    ["Панель AI",[
+      "Когда вы пользуетесь панелью AI, ваше сообщение — вместе с кратким описанием текущих задач, привычек и времени фокуса — отправляется провайдеру AI, который на него отвечает, чтобы ответ был про вашу реальную неделю.",
+      "Это значит, что <strong>текст ваших задач и привычек покидает Nox при использовании панели AI</strong>. Если этого не нужно — просто не открывайте её; ничто другое в приложении не отправляет ваш контент наружу."
+    ]],
+    ["Подключённые сервисы",[
+      "<strong>Google Calendar или Notion</strong> — только если вы их подключите. Nox хранит лишь токен доступа, и вы можете отключить их в Настройках в любой момент.",
+      "<strong>Шрифты и библиотеки</strong> загружаются с Google Fonts и cdnjs — эти сервисы видят запрос вашего браузера.",
+      "Хостинг — Vercel; база, хранилище и аутентификация — Supabase."
+    ]],
+    ["Что остаётся только на вашем устройстве",[
+      "Тема, язык, акцентный цвет, хронотип, свёрнутые разделы, недавние эмодзи и несколько отметок «показано». Это лежит в local storage браузера, не уходит на сервер и исчезает при очистке данных сайта."
+    ]],
+    ["Как забрать данные и удалить их",[
+      "<strong>Экспорт</strong> — Настройки → Ваши данные: один JSON-файл со всем, что хранит приложение.",
+      "<strong>Удаление</strong> — Настройки → Опасная зона удаляет сам аккаунт: задачи, привычки, страницы, цели, финансы, разделы, награды, письма, записи об оплате, push-подписки, участие в Focus Room, подключение Google Calendar или Notion и логин.",
+      "Остаётся одно — счётчики того, какие части приложения открывали и как часто. Эти записи в тот же момент теряют связь с вами, так что оставшееся ни к кому не ведёт.",
+      "Если при удалении что-то пойдёт не так, приложение скажет об этом прямо. Напишите нам — доведём до конца вручную."
+    ]],
+    ["Файлы cookie",[
+      "<strong>Nox не ставит никаких cookie.</strong> Ни для аналитики, ни для рекламы, ни для чего ещё — этого слова нет в коде, который работает на вашем устройстве.",
+      "Вместо этого используется <strong>local storage</strong> браузера, только на вашем устройстве: токен входа, чтобы вы оставались в системе, и небольшие настройки вроде темы, языка и акцентного цвета. Очистка данных сайта в браузере удаляет всё это.",
+      "Поскольку в cookie ничего не хранится и ничего не передаётся третьим лицам, отдельная политика cookie не нужна. Этот раздел её заменяет."
+    ]],
+    ["Дети",[
+      "Nox не предназначен для детей младше 13 лет и осознанно ничего у них не собирает."
+    ]],
+    ["Изменения",[
+      "Если политика изменится так, что это затронет собираемые данные, дата вверху обновится, а об изменении скажут внутри приложения, а не опубликуют тихо."
+    ]]
+  ],
+  contact_h:"Вопросы",
+  contact_p:"Пишите по любому пункту этой страницы — включая просьбу удалить логин:",
+  contact_todo:"⚠️ Контактный адрес ещё не задан. Заполните CONTACT_EMAIL в privacy.html до публикации."
+}
+};
+
+let L = (localStorage.getItem("nox_lang") || "en");
+if(!DOC[L]) L = "en";
+
+const OWNER_INFO = {
+  en: "Data controller and site operator: <strong>Behruzbek Olimov</strong>, an individual creator in Uzbekistan.",
+  uz: "Ma’lumotlar nazoratchisi va sayt operatori: O‘zbekistondagi jismoniy shaxs — <strong>Behruzbek Olimov</strong>.",
+  ru: "Оператор сайта и контролёр данных: <strong>Behruzbek Olimov</strong>, частное лицо в Узбекистане."
+};
+
+function render(){
+  const d = DOC[L];
+  document.documentElement.lang = L;
+  document.title = d.title + " — Nox";
+  document.getElementById("back").textContent = d.back;
+  ["en","uz","ru"].forEach(x => document.getElementById("l-"+x).classList.toggle("on", x === L));
+  const contact = CONTACT_EMAIL
+    ? '<p>' + d.contact_p + ' <a href="mailto:' + CONTACT_EMAIL + '" style="color:var(--acc);">' + CONTACT_EMAIL + '</a></p>'
+    : '<div class="callout todo"><p>' + d.contact_todo + '</p></div>';
+  document.getElementById("doc").innerHTML =
+    '<header><h1>' + d.title + '</h1><div class="upd">' + d.upd + '</div>'
+    + '<p class="lede">' + d.lede + '</p></header>'
+    + '<div class="callout"><p>' + OWNER_INFO[L] + ' <a href="ownership.html">Ownership record</a></p></div>'
+    + d.s.map(sec =>
+        '<h2>' + sec[0] + '</h2><ul>' + sec[1].map(li => '<li>' + li + '</li>').join("") + '</ul>'
+      ).join("")
+    + '<h2>' + d.contact_h + '</h2>' + contact;
+}
+function setL(x){ L = x; try{ localStorage.setItem("nox_lang", x); }catch(e){} render(); }
+function setT(){
+  const light = document.documentElement.classList.toggle("light");
+  document.body.classList.toggle("light", light);
+  try{ localStorage.setItem("nox_theme", light ? "light" : "dark"); }catch(e){}
+  document.getElementById("thm").textContent = light ? "☾" : "☀︎";
+}
+(function(){
+  let saved = null;
+  try{ saved = localStorage.getItem("nox_theme"); }catch(e){}
+  if(saved === "light"){
+    document.documentElement.classList.add("light");
+    document.body.classList.add("light");
+    document.getElementById("thm").textContent = "☾";
+  }
+  render();
+})();
+</script>
+
+
+<script src="assets/legal.js"></script>
+</body>
+</html>

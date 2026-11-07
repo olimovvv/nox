@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# The app itself lives behind auth on the same URL (a single-page app), so there are no private
+# paths to disallow — the crawler only ever sees the public landing page.
+
+Sitemap: https://noxlabapp.vercel.app/sitemap.xml
